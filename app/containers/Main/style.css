@@ -1,0 +1,6 @@
+.vk-main-wrap{
+	height: 100%;
+}
+.ps-main-wrap{
+	height: calc(100% - 50px);
+}

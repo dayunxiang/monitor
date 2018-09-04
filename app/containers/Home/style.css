@@ -1,0 +1,119 @@
+.vk-home-wrap{
+	/*background-image: url("../../../resource/2.jpg");*/
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	background-color: white;
+}
+.vk-tree-cont{
+	position: relative;
+	float: left;
+	width: 250px;
+	height: 100%;
+	background-color: white;
+	z-index: 100;
+	border-right: 1px solid #d9d9d9;
+	transition: width 0.5s ease;
+}
+.vk-tree{
+	height:  calc(100% - 85px);
+    margin-top: 85px;
+    overflow: auto;
+
+}
+.vk-wrapper-cont{
+	position: absolute;
+	top: 0;
+	padding-left: 250px;
+	float: left;
+	height: 100%;
+	width: 100%;
+	transition: padding-left 0.5s ease;
+	overflow: auto;
+	/*min-height: 500px;*/
+
+}
+.vk-cont{
+	width: 100%;
+	height: 100%;
+	/*min-height: 500px;*/
+	background-color: white;
+}
+.vk-home-wrap{
+	position: relative;
+	/*min-height: 500px;
+	min-width: 962px; */
+	height: 100%;
+}
+.vk-home-profile{
+	position: absolute;
+	top:0;
+	left: 0;
+    width: 100%;
+	padding-top: 10px;
+	padding-left: 10px;
+	height: 85px;
+	background-color: white;
+	border-bottom: 1px dashed lightgray;
+	
+}
+.vk-home-profile span{
+	transition: all 0.5s ease;
+}
+.vk-profile-name{
+	display: block;
+	margin-left: 80px;
+	font-size: 16px;
+	overflow: hidden;
+	white-space: nowrap;
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+.vk-profile-dept{
+	display: block;
+	margin-left: 80px;
+	font-size: 14px;
+	color: grey;
+	margin-top: 6px;
+	overflow: hidden;
+	white-space: nowrap;
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+.vk-home-profile .ant-avatar{
+	position: absolute;
+	top:10px;
+}
+.vk-home-profile .ant-avatar-lg{
+	width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 30px;
+}
+.ant-menu-inline, .ant-menu-vertical{
+	border: 0;
+}
+.ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-item{
+	left: 0px;
+}
+.ant-menu-inline .ant-menu-item, .ant-menu-inline .ant-menu-submenu-title{
+	width: calc(100%);
+}
+.ant-tabs-bar{
+	margin: 0 0 8px 0;
+}
+tr,th,td{
+	overflow: hidden;
+	white-space: nowrap;
+}
+.row-highlight{
+	background-color: rgb(20,150,242);
+	color: white;
+}
+.row-highlight td{
+	background-color: rgb(20,150,242)!important;
+	color: white!important;
+}
+.vk-subpage{
+	padding-left: 10px; 
+	overflow: auto;
+}

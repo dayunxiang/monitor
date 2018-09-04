@@ -1,0 +1,20 @@
+.vk-login-cont{
+	/*background-image: url("../../../resource/login_bg.jpg");*/
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	position: relative;
+}
+
+.vk-btns-cont button {
+	display: inline-block;
+	width: 100%;
+}
+
+#lgForm>div{
+	margin-bottom: 10px;
+}
+#canvas{
+	position: absolute;
+	left: 0;
+	top: 0;
+}

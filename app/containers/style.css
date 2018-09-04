@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'anticon';
+  font-display: fallback;
+  src: url("../font/antfont.eot");
+  /* IE9*/
+  src: url("../font/antfont.woff") format("woff"), url("../font/antfont.ttf") format("truetype"), url("../font/antfont.svg") format("svg"); }
+$pecent:100%;
+*{
+	margin:0;
+	padding: 0;
+}
+body,html{
+	width: $pecent;
+	height: $pecent;
+}
+ol, ul{
+	list-style: none;
+}
+#root {
+	min-height: 500px;
+	min-width: 962px; 
+}
+#root,#root>div{
+	width: $pecent;
+	height: $pecent;
+}
+
+.vk-home-wrap{
+	height: $pecent;
+}
