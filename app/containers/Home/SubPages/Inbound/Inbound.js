@@ -22,7 +22,6 @@ class Inbound extends BaseSubPage {
             cover:false, //遮盖
             checkedRowData:null, //勾选的行数据,用户删除
             modalShow: false, //莫泰窗口
-            tableDtlData: null, //明细表数据,用于编辑状态
             tableSrcollY:0,
         }
         this.index = 100;//测试
@@ -74,17 +73,16 @@ class Inbound extends BaseSubPage {
                         <Toolbar {...toolbarOpt}/>
                         <Table ref="table" size={'small'} bordered={false} scroll={{x:250}} 
                             rowSelection={{onSelect:this.onSelect,onChange:this.onChange.bind(this)}} columns={columns} 
-                            dataSource={this.state.tableData} onRowClick={this.tableRowClick.bind(this)}
+                            dataSource={this.state.tableData} onRow={(record, index) =>{ return { onClick:this.tableRowClick.bind(this, record, index) }}}
                             expandedRowRender={record => <p>{'哈哈哈哈哈'}</p>} pagination={{defaultPageSize:30}}/>
                         {this.state.cover? <Cover cover={this.state.cover} />:null} 
 
                     </Col>
                     <Col  md={16} >
                         <InboundForm formData={this.state.tableSelDtlData} ref="form" disabled={this.state.formDisable} />
-                        <Vktable ref="tableDtl" enable={this.state.cover} size={'small'} bordered={false} scroll={{x:true}} 
-                            rowSelection={{onSelect:null,onChange:null}} columns={dtlColumns} 
-                            dataSource={this.state.cover ? (this.state.tableDtlData ? this.state.tableDtlData: null) : (this.state.tableSelDtlData ? this.state.tableSelDtlData.materialDtl : null)} 
-                            editChange={this.editChange.bind(this)}
+
+                        <Vktable ref={(node) => {this.vkTable = node;}} size={'small'} bordered={false} scroll={{x:true}} 
+                            rowSelection={{onSelect:null,onChange:null}} columns={dtlColumns} tempKey="vk-mt"
                         />
                     </Col>
                 </Row>
@@ -219,22 +217,20 @@ class Inbound extends BaseSubPage {
     }
     toolbarNewClick(success){
         success();
-        this.cleanForm();
+        this.newForm();
         this.setState({
             formDisable:false,
             cover:true,
-            tableDtlData:[]
         });
     }
     toolbarEditClick(success){
         if (this.state.tableSelDtlData) {
             success();
-            let tableDtlDataCopy = cloneObj(this.state.tableSelDtlData.materialDtl);
             this.setState({
                 formDisable:false,
                 cover:true,
-                tableDtlData: tableDtlDataCopy ? tableDtlDataCopy:[]
             });
+            this.editForm();
         }else{
             Modal.warning({
                 title: '对不起',
@@ -275,46 +271,48 @@ class Inbound extends BaseSubPage {
             if (!err) {
                 // 
                 var vals = this.getFormValue();
-                console.log("save",this.state.tableDtlData);
+                var tableData = this.vkTable.getData();
+                console.log(tableData);
                 window.setTimeout(() => {
                     success();
+                    this.vkTable.ownerFill();
                     form.resetFields();
                     if (status === 2) { //新增
-                        var formData = {key:100, billNo:vals.billNo, createTime:vals.billTime, status:vals.billStatus, applyMan:vals.applyMan, warehouse:vals.warehouse};
-                        this.state.tableData.push(formData);
-                        var dtlData = Object.assign({},formData,{materialDtl: this.state.tableDtlData})
-                        this.setState({
-                            tableData:this.state.tableData,
-                            tableSelData: formData,
-                            tableSelDtlData: dtlData,
-                            formDisable:true,
-                            cover:false,
-                            tableDtlData:null
-                        },() => {
-                            this.fillForm();
-                        });
+                        // var formData = {key:100, billNo:vals.billNo, createTime:vals.billTime, status:vals.billStatus, applyMan:vals.applyMan, warehouse:vals.warehouse};
+                        // this.state.tableData.push(formData);
+                        // var dtlData = Object.assign({},formData,{materialDtl: this.state.tableDtlData})
+                        // this.setState({
+                        //     tableData:this.state.tableData,
+                        //     tableSelData: formData,
+                        //     tableSelDtlData: dtlData,
+                        //     formDisable:true,
+                        //     cover:false,
+                        //     tableDtlData:null
+                        // },() => {
+                        //     this.fillForm();
+                        // });
                     }else{ //修改
-                        var data = { billNo:vals.billNo, createTime:vals.billTime, status:vals.billStatus, applyMan:vals.applyMan, warehouse:vals.warehouse};
-                        var nowData = null;
-                        this.state.tableData.forEach((item) => {
-                            if (item.key === this.state.tableSelData.key) {
-                                nowData = Object.assign(item,data);
-                                return false;
-                            }
-                        });
-                        this.state.tableSelDtlData.materialDtl = this.state.tableDtlData;
-                        var dtlData = Object.assign(this.state.tableSelDtlData,data);
+                        // var data = { billNo:vals.billNo, createTime:vals.billTime, status:vals.billStatus, applyMan:vals.applyMan, warehouse:vals.warehouse};
+                        // var nowData = null;
+                        // this.state.tableData.forEach((item) => {
+                        //     if (item.key === this.state.tableSelData.key) {
+                        //         nowData = Object.assign(item,data);
+                        //         return false;
+                        //     }
+                        // });
+                        // this.state.tableSelDtlData.materialDtl = this.state.tableDtlData;
+                        // var dtlData = Object.assign(this.state.tableSelDtlData,data);
                         
-                        this.setState({
-                            tableData:this.state.tableData,
-                            tableSelData: nowData,
-                            tableSelDtlData: dtlData,
-                            formDisable:true,
-                            cover:false,
-                            tableDtlData:null
-                        },() => {
-                            this.fillForm();
-                        });
+                        // this.setState({
+                        //     tableData:this.state.tableData,
+                        //     tableSelData: nowData,
+                        //     tableSelDtlData: dtlData,
+                        //     formDisable:true,
+                        //     cover:false,
+                        //     tableDtlData:null
+                        // },() => {
+                        //     this.fillForm();
+                        // });
                     }
                     
                 },1000)
@@ -333,9 +331,8 @@ class Inbound extends BaseSubPage {
         this.setState({
             formDisable:true,
             cover:false,
-            tableDtlData:[]
         });
-        this.fillForm();
+        this.cancelForm();
     }
     //获取表单的对象
     getFormValue(){
@@ -358,6 +355,7 @@ class Inbound extends BaseSubPage {
                 warehouse: selData.warehouse,
                 isnotic:true
             });
+            this.vkTable.fill(selData.materialDtl)
         }
         
     }
@@ -371,18 +369,47 @@ class Inbound extends BaseSubPage {
             warehouse: ""
         });
     }
-    tableDtlInputChange(record,key,e){
-        var text = e.target.value;
-        record[key] = text;
-        
-        console.log(record,key,e);
-        console.log(this.state.tableDtlData);
+    newForm() {
+        var form = this.refs.form.getForm();
+        form.setFieldsValue({
+            billNo: "",
+            billTime: moment('2018-01-02 12:12:12', 'YYYY-MM-DD HH:mm:ss'),
+            billStatus:"",
+            applyMan: "",
+            warehouse: ""
+        });
+        this.vkTable.new();
     }
-    editChange(index, record, e){
-        console.log(index, record, e);
-        this.state.tableDtlData[index] = record;
-        this.forceUpdate();
+    editForm() {
+        var form = this.refs.form.getForm(), selData = this.state.tableSelDtlData;
+        if (selData) {
+            form.setFieldsValue({
+                billNo: selData.billNo,
+                billTime: moment(selData.createTime, 'YYYY-MM-DD HH:mm:ss'),
+                billStatus:selData.status,
+                applyMan: selData.applyMan,
+                warehouse: selData.warehouse,
+                isnotic:true
+            });
+            this.vkTable.edit(selData.materialDtl);
+        }
     }
+    cancelForm() {
+        var form = this.refs.form.getForm(), selData = this.state.tableSelDtlData;
+        if (selData) {
+            form.setFieldsValue({
+                billNo: selData.billNo,
+                billTime: moment(selData.createTime, 'YYYY-MM-DD HH:mm:ss'),
+                billStatus:selData.status,
+                applyMan: selData.applyMan,
+                warehouse: selData.warehouse,
+                isnotic:true
+            });
+            this.vkTable.setEnable(false).setData(selData.materialDtl);
+        }
+        this.vkTable.fill(selData && selData.materialDtl);
+    }
+ 
     
    
 

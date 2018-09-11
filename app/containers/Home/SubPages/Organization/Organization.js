@@ -7,7 +7,7 @@ import Toolbar from '../../../../components/Toolbar/Toolbar.js';
 import Cover from '../../../../components/Cover/Cover.js';
 // import "./style.css";
 
-class Organization extends BaseSubPage {
+class Organization extends BaseSubPage{
     constructor(props, context) {
         super(props, context);
         this.state = {

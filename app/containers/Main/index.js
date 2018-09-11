@@ -84,6 +84,9 @@ class Main extends React.Component {
         console.log(a, b);
     // this.props.homeActions.reset();
     }
+    componentDidUpdate(prevProps, prevState) {
+        console.log("mainupdate");
+    }
 
 
 }

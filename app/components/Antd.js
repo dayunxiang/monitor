@@ -66,7 +66,10 @@ import 'antd/lib/tabs/style/css';
 import Avatar from 'antd/lib/avatar';  
 import 'antd/lib/avatar/style/css';
 
+import Popconfirm from 'antd/lib/popconfirm';  
+import 'antd/lib/popconfirm/style/css';
+
 
 
 export { TreeSelect,InputNumber,Badge,Tree, Menu, Dropdown, Form, Input, Tooltip, Cascader, Select, 
-	Row, Col, Checkbox, AutoComplete,Modal, DatePicker, Button ,Table  , Icon, Tabs,Avatar};
+	Row, Col, Checkbox, AutoComplete,Modal, DatePicker, Button ,Table  , Icon, Tabs, Avatar, Popconfirm};
