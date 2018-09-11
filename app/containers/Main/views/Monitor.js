@@ -118,7 +118,7 @@ class Monitor extends React.Component {
             }
         });
         this.map.startHighlightFeatureonLayer("ship");
-        this.map.startCluster("ship");
+        // this.map.startCluster("ship");
         this.map.addVector({
             key: "region",
             zIndex: 22,
