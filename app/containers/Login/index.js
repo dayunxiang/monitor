@@ -110,6 +110,7 @@ class Login extends React.Component {
         //     console.log(test)
         // })
     }
+    
     componentWillUnmount(){
         window.removeEventListener("resize", this.onresize);
         window.removeEventListener("keydown", this.gameKeydown);

@@ -14,10 +14,10 @@ class Test extends React.Component {
 	      	
 	    );
     }
-    componentWillReceiveProps(){
+    componentWillReceiveProps() {
 
     }
-    componentDidMount(){
+    componentDidMount() {
     	
     }
 	

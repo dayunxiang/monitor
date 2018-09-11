@@ -1,0 +1,18 @@
+.vk-scroll-cont {
+	position: relative;
+}
+.vk-scroll-wrap{
+	position: relative;
+}
+.vk-scroll-bar{
+	position: absolute;
+	width:6px;
+	right: 2px;
+	top: 0;
+	background:red;
+	border-radius: 3px;
+}
+.vk-scroll-wrap>div {
+	overflow: auto !important;
+	height: auto !important;
+}

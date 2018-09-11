@@ -6,6 +6,7 @@ import * as homeActions from '../../actions/home.js';
 import './style.css';
 // import Tree from '../../components/Tree/Tree.js'
 import AntTree from '../../components/Tree/AntTree.js';
+import Scroll from '../../components/Scroll/Scroll.js';
 import Operator from './SubPages/Operator/Operator.js';
 import Inbound from './SubPages/Inbound/Inbound.js';
 import Organization from './SubPages/Organization/Organization.js';
@@ -59,15 +60,15 @@ class Home extends React.Component {
         </Tabs>;
         return (
             <div ref="homeWrap" className="vk-home-wrap">
+                <HomeHeader userinfo={this.props.userinfo} itemClick={this.headerItemClick.bind(this)} />
                 <div ref="tree" className="vk-tree-cont" style={{width: this.state.collapsed ? "64px" : "250px"}}>
-                    <div className="vk-home-profile">
-                        <Avatar size={this.state.collapsed ? 'default' : 'large'} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                        <span className="vk-profile-name" style={ {display: this.state.collapsed ? "none" : "block"} } >taosy</span>
-                        <span className="vk-profile-dept" style={ {display: this.state.collapsed ? "none" : "block"} }>上海普适导航科技</span>
-                    </div>
-                    <div className="vk-tree" style={{overflow: this.state.collapsed ? "visible" : "auto"}}>
-                        <AntTree inlineCollapsed={this.state.collapsed} itemClick={this.treeItemClick.bind(this)}/>
-                    </div>
+                    <Scroll>
+                       <div className="vk-tree" style={{overflow: this.state.collapsed ? "visible" : "auto"}}>
+                            <AntTree inlineCollapsed={this.state.collapsed} itemClick={this.treeItemClick.bind(this)}/>
+                        </div>
+                    </Scroll>
+                    
+                    
                 </div>
                 <div ref="cont" className="vk-wrapper-cont" style={{paddingLeft: this.state.collapsed ? "64px" : "250px"}}>
                     <div className="vk-cont">
@@ -153,10 +154,11 @@ class Home extends React.Component {
 // -------------------redux react 绑定--------------------
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
         userinfo: state.userinfo,
-        tabData: state.main.home.tabData,
-        tabIndex: state.main.home.tabIndex
+        tabData: state.home.tabData,
+        tabIndex: state.home.tabIndex
     };
 }
 

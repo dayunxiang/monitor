@@ -8,24 +8,23 @@
 	position: relative;
 	float: left;
 	width: 250px;
-	height: 100%;
+	height: calc(100% - 50px);
 	background-color: white;
 	z-index: 100;
 	border-right: 1px solid #d9d9d9;
 	transition: width 0.5s ease;
 }
 .vk-tree{
-	height:  calc(100% - 85px);
-    margin-top: 85px;
+	height:  (100% );
     overflow: auto;
 
 }
 .vk-wrapper-cont{
 	position: absolute;
-	top: 0;
+	top: 50px;
 	padding-left: 250px;
 	float: left;
-	height: 100%;
+	height: calc(100% - 50px);
 	width: 100%;
 	transition: padding-left 0.5s ease;
 	overflow: auto;
