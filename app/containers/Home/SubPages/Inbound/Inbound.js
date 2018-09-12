@@ -81,16 +81,20 @@ class Inbound extends BaseSubPage {
                     </Col>
                     <Col  md={16} >
                         <InboundForm formData={this.state.tableSelDtlData} ref="form" disabled={this.state.formDisable} />
-                        <Scroll>
+                        
                             <div className="vktest" style={{height:"150px",overflow:"auto"}}>
-                                <p>1</p>
-                                <p>2</p>
-                                <p>3</p>
-                                <p>4</p>
-                                <p>5</p>
-                                <p>6</p>
+                                <Scroll>
+                                    <div>
+                                        <p>1</p>
+                                        <p>2</p>
+                                        <p>3</p>
+                                        <p>4</p>
+                                        <p>5</p>
+                                        <p>6</p>
+                                    </div>
+                                </Scroll>
                             </div>
-                        </Scroll>
+                        
                         
                         <Vktable ref={(node) => {this.vkTable = node;}} size={'small'} bordered={false} scroll={{x:true}} 
                             rowSelection={{onSelect:null,onChange:null}} columns={dtlColumns} tempKey="vk-mt"

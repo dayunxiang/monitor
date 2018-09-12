@@ -68,7 +68,6 @@ class Home extends React.Component {
                         </div>
                     </Scroll>
                     
-                    
                 </div>
                 <div ref="cont" className="vk-wrapper-cont" style={{paddingLeft: this.state.collapsed ? "64px" : "250px"}}>
                     <div className="vk-cont">

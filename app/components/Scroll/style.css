@@ -9,8 +9,9 @@
 	width:6px;
 	right: 2px;
 	top: 0;
-	background:red;
+	background:black;
 	border-radius: 3px;
+	transition: opacity .3s;
 }
 .vk-scroll-wrap>div {
 	overflow: auto !important;
