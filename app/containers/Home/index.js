@@ -11,6 +11,7 @@ import Operator from './SubPages/Operator/Operator.js';
 import Inbound from './SubPages/Inbound/Inbound.js';
 import Organization from './SubPages/Organization/Organization.js';
 import MapApi from './SubPages/MapApi/MapApi.js';
+import DashBoard from './SubPages/DashBoard/DashBoard.js';
 import { hashHistory } from 'react-router';
 import { Tabs, Button ,Avatar} from '../../components/Antd.js';
 const TabPane = Tabs.TabPane;
@@ -18,7 +19,8 @@ const Pages = {
     Operator: Operator,
     Inbound: Inbound,
     Organization: Organization,
-    MapApi: MapApi
+    MapApi: MapApi,
+    DashBoard: DashBoard
 };
 // let consolelog = function(text){
 //     return (target,name, descriptor) =>{
@@ -46,7 +48,7 @@ class Home extends React.Component {
         super(props, context);
         // console.log(123);
         this.state = {
-            collapsed: false
+            collapsed: true
         }
     }
     render() {
@@ -63,7 +65,7 @@ class Home extends React.Component {
                 <HomeHeader userinfo={this.props.userinfo} itemClick={this.headerItemClick.bind(this)} />
                 <div ref="tree" className="vk-tree-cont" style={{width: this.state.collapsed ? "64px" : "250px"}}>
                     <Scroll>
-                       <div className="vk-tree" style={{overflow: this.state.collapsed ? "visible" : "auto"}}>
+                       <div className="vk-tree" >
                             <AntTree inlineCollapsed={this.state.collapsed} itemClick={this.treeItemClick.bind(this)}/>
                         </div>
                     </Scroll>
@@ -85,31 +87,22 @@ class Home extends React.Component {
         if (!this.props.userinfo.id) {
             // hashHistory.push('/login');
         }
-        // var treeDiv = this.refs.tree;
-        // var contDiv = this.refs.cont;
-        // var homeWrap = this.refs.homeWrap
-        // var windowH = window.innerHeight;
-        // var h = (windowH ) > 500 ? (windowH - 50) +'px': (500 - 50)+'px' ;
-        // var wh = (windowH ) > 500 ? (windowH ) +'px': (500 )+'px' ;
-        // treeDiv.style.height = h;
-        // contDiv.style.height = h;
-        // this.onresize = () => {
-            // var windowH = window.innerHeight;
-            // var h = (windowH) > 500 ? (windowH - 50) +'px': (500 -50)+'px';
-            // var wh = (windowH ) > 500 ? (windowH ) +'px': (500 )+'px' ;
-            // treeDiv.style.height = h;
-            // contDiv.style.height = h;
-        // }
-        // window.addEventListener("resize", this.onresize);
-
-
+        this.showFisrtTabView();
     }
+
     componentWillUnmount() {
         // window.removeEventListener("resize", this.onresize);
     }
     componentDidCatch(a, b) {
         console.log(a, b);
         // this.props.homeActions.reset();
+    }
+    showFisrtTabView() {
+        var text = {
+            key: "DashBoard",
+            title: "总控台"
+        };
+        this.props.homeActions.addTab(text);
     }
     createSubPage(key,props) {
         var Com = Pages[key];
@@ -118,7 +111,7 @@ class Home extends React.Component {
         }
         
     }
-    onChange(activeKey){
+    onChange(activeKey) {
         this.props.homeActions.activeTab(activeKey);
     }
     onEdit(targetKey, action) {

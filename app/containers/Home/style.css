@@ -117,3 +117,6 @@ tr,th,td{
 	padding-left: 10px; 
 	overflow: auto;
 }
+.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title{
+	    padding: 0 25px !important;
+}

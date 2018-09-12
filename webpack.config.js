@@ -45,9 +45,10 @@ module.exports = {
         },
         {
             test: /\.(woff|woff2|svg|eot|ttf)$/,
-            loader: 'file-loader',
-            query: {
-                name: ("font/[name].[hash:5].[ext]")
+            loader: 'file-loader?',
+            options: {
+                name: ("font/[name].[hash:5].[ext]"),
+                publicPath: "./"
             }
         }
         ]
