@@ -1,0 +1,38 @@
+.vk-search-container{
+    position: relative;
+}
+.vk-search-ul{
+    background: white;
+    position: absolute;
+    top: 36px;
+    left: 0;
+    max-height: 400px;
+    overflow: auto;
+    width: 100%;
+    display: none;
+    transform-origin:50% 0%;
+}
+.vk-item-li{
+    height: 32px;
+    padding: 5px 12px;
+}
+.vk-item-li:hover {
+    background: #e6f7ff;
+    cursor: pointer;
+}
+@keyframes show{
+    from { opacity: 0 ;transform:rotate3d(1,0,0,45deg)}
+    to {opacity: 1; transform:rotate3d(1,0,0,0deg)}
+}
+@keyframes hide{
+    from { opacity: 1; transform:rotate3d(1,0,0,0deg)}
+    to {opacity: 0;transform:rotate3d(1,0,0,45deg)}
+}
+.vk-search-ul.vk-search-ulshow{
+    animation: show 0.2s linear 0s forwards;
+    display: block;
+}
+.vk-search-ul.vk-search-ulhide{
+    animation: hide 0.2s linear 0s forwards;
+    display: block;
+}

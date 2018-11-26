@@ -1,0 +1,451 @@
+上面按钮显示
+.General_control{
+    /* background-color:rgb(247,247,247); */
+}
+.General_control .detail .navTex{
+    height:200px !important;
+    background-color: yellow !important;
+   
+}
+/* 字体 */
+.General_control .detail .zf-btn .Bigtext{
+    /* margin-top:15px; */
+    font-size:25px !important;
+    margin:0 auto;
+    color:rgb(26,187,156);
+}
+
+.General_control .detail .zf-btn .NameText{
+    /* font-size:18px ; */
+    margin:0 auto;
+    float:left;
+    /* text-align: center; */
+    font-weight:700;
+    /* margin-top:25px; */
+
+}
+.General_control .detail button div{
+    margin-top:5px;
+	/* color:#FFFFFF; */
+	margin-left:-10px;
+}
+.General_control .psdh .pt{
+    height:155px;
+    /* line-height:180px; */
+        margin:0 auto;
+
+    background-color:rgb(247,247,247);
+}
+/* 八個按鈕 */
+.General_control .psdh .pt .zf-btn{
+    float:left;
+  
+    margin-right:1%;
+    margin-left:12px;
+    margin-top:25px;
+}
+.General_control .psdh .pt .zf-btn .anticon{
+    margin-right:5px
+}
+.General_control .psdh .pt .zf-btn1 .anticon{
+    margin-right:8px
+}
+.General_control .psdh .pt .zf-btn1{
+    float:left;
+   
+    width:0%;
+    margin-left:12px;
+    margin-top:25px;
+}
+.General_control .psdh .pt .zf-btn1 .NameText{
+    font-weight:700;
+    font-size:16px;
+    width:100px;
+
+}
+.General_control .psdh .pt .zf-btn1 .Bigtext{
+    font-size:30px;
+    text-align: center;
+    color:rgb(26,187,156);
+}
+/* 下面文字 */
+.General_control .psdh .pt .zf-btn .no{
+    font-weight: 700;
+    /* margin-left:10px; */
+    opacity: 0.7;
+}
+.General_control .psdh .pt .zf-btn .yes{
+    font-weight: 700;
+    /* margin-left:10px; */
+    opacity: 0.7;
+
+}
+.General_control .psdh .pt .bing{
+    float:left;
+    /* padding-left:30px; */
+    width: 140px;
+    /* margin:0 auto; */
+    /* text-align: center; */
+    /* border:1px solid red; */
+    margin-top:15px;
+    margin-left:40px;
+}
+.General_control .psdh .pt .zf-btn .NameText{
+    font-weight:700;
+    font-size:16px;
+
+}
+.General_control .psdh .pt .zf-btn .line{
+    height:110px;
+   margin-top:5px;
+    width:2px;
+    margin-right:5px;
+    background-color:rgb(173,171,181) !important;
+    float:left;
+}
+.General_control .psdh .pt .zf-btn .line-right{
+    float:left;
+}
+.General_control .psdh .pt .zf-btn .Bigtext{
+    font-size:30px;
+    text-align: center;
+    color:rgb(26,187,156);
+}
+.General_control .psdh{
+    /* height:410px; */
+    margin-bottom:35px;
+    /* border:1px solid rebeccapurple; */
+}
+/* 圖部分 */
+.General_control .showPic{
+    height:800px;
+    /* border:1px solid rebeccapurple; */
+}
+.General_control .showPic .all{
+    border-top:2px solid rgb(230,233,237);
+    margin-top:15px;
+
+}
+.General_control .showPic .title{
+    height:35px;
+    /* background-color: green;; */
+    line-height: 35px;
+    font-size:18px;
+    font-weight: 700;
+    margin-left:55px;
+    margin-bottom:15px;
+}
+.General_control .picture{
+    float:left;
+    width:59%;
+    background-color:rgb(247,247,247);
+}
+.General_control .left-m{
+    float:left;
+    width:39%;
+    margin-left:1%;
+    height:400px;
+    border:1px solid #e8e8e8;
+
+    /* margin-right:15px; */
+}
+
+
+/* 第一个 */
+.every .item-line{
+    font-size:16px;
+}
+.General_control .buttom{
+    border-top:2px solid  #e8e8e8;
+      background-color: rgb(243,243,243);
+      height:550px;
+      /* margin:0 auto; */
+}
+.buttom .pic_one{
+    width:30%;
+    height:100%;
+    float:left;
+    border:1px solid #e8e8e8;
+    margin-top:15px;
+    /* margin-right:2%; */
+    margin-left:15px;
+    background-color: #fff;
+}
+.buttom .pic_one .one .pic1{
+    margin-left:55px;
+}
+.buttom .pic_one .one .pic1 .every{
+    border-bottom:1px solid  #e8e8e8;
+    margin-bottom:10px;
+    margin-right:35px;
+    /* margin:0 auto; */
+    /* text-align: center; */
+}
+.buttom .pic_one .one .oneTe{
+    height:55px;
+    line-height:55px;
+    font-size:16px;
+    font-weight:700;
+    border-bottom:2px solid  #e8e8e8;
+    margin-bottom:15px;
+    margin-left:55px;
+    margin-right:40px;
+    /* text-align: center; */
+
+}
+/* 第二个 */
+.buttom .pic_two{
+    width:30%;
+    height:100%;
+    float:left;
+    border:1px solid #e8e8e8;
+    /* margin-right:2%; */
+    margin-top:15px;
+    margin-left:15px;
+    background-color: #fff;
+}
+.buttom .pic_two .one .pic1{
+    margin-left:55px;
+}
+.buttom .pic_two .one .pic1 .every{
+    border-bottom:1px solid  #e8e8e8;
+    margin-bottom:10px;
+    margin-right:35px;
+}
+.buttom .pic_two .one .oneTe{
+    height:55px;
+    line-height:55px;
+    font-size:16px;
+    font-weight:700;
+    border-bottom:2px solid  #e8e8e8;
+    margin-bottom:15px;
+    margin-left:55px;
+    margin-right:40px;
+}
+/* 第三个 */
+.buttom .pic_three{
+    width:30%;
+    height:100%;
+    float:left;
+    border:1px solid #e8e8e8;
+    /* margin-right:2%; */
+    margin-top:15px;
+    margin-left:15px;
+    background-color: #fff;
+}
+.buttom .pic_three .one .pic1{
+    margin-left:55px;
+}
+.buttom .pic_three .one .pic1 .every{
+    border-bottom:1px solid  #e8e8e8;
+    margin-bottom:10px;
+    margin-right:35px;
+}
+.buttom .pic_three .one .oneTe{
+    height:55px;
+    line-height:55px;
+    font-size:16px;
+    font-weight:700;
+    border-bottom:2px solid  #e8e8e8;
+    margin-bottom:15px;
+    margin-left:55px;
+    margin-right:40px;
+}
+
+
+/* 水位滚动 */
+/* .General_control .left-m table {
+  
+  }
+  .General_control .left-m{
+
+  }
+    
+  .General_control .left-m tbody  tr {
+    height: 40px;
+    padding-top: 10px;
+    text-align: center;
+  }
+  .General_control .left-m .table .body { 
+    height: 360px; 
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+  }
+   .General_control th { display: block; }
+   .General_control td{ display: block; }
+   .General_control tr { 
+       display: block;
+       margin:5px;
+       background-color:rgb(243,243,243);
+ }
+   .General_control thead { display: block; }
+   .General_control tbody { display: block; }
+  .General_control .left-m td,  .General_control .left-m th { 
+      float: left;
+      font-size:16px;
+     }
+     .General_control .left-m td:nth-child(1),
+     .General_control .left-m th:nth-child(1) {
+    width: 25%;
+  } 
+  .General_control .left-m td:nth-child(2),
+  .General_control .left-m th:nth-child(2) {
+    width: 25%;
+    float: left;
+  }
+  .General_control .left-m td:nth-child(3),
+  .General_control .left-m th:nth-child(3) {
+    width: 25%;
+    float: left;
+  }
+  .General_control .left-m td:nth-child(4),
+  .General_control .left-m th:nth-child(4) {
+    width: 25%;
+    float: left;
+  }
+  .General_control .left-m thead {
+    background-color:rgb(247,247,247);
+    color:black;
+  } */
+ /* 地图部分 */
+ .picture .map{
+    float:left;
+	height:800px;
+	width:100%;
+	overflow: hidden;
+	clear: left;
+	position: relative;
+	bottom: 0px;
+    left: 0px;
+    /* border:1px solid red; */
+ }
+ /* 新拼水利设施 */
+ .General_control .left-m .table {
+     height:808px; 
+      overflow-x: scroll;
+  }
+ .everyWater{
+     height:120px;
+     border:1px solid #e8e8e8;
+     background-color: rgb(242,242,242);
+     margin-bottom:5px;
+ }
+ 
+ .everyWater  .water_one  span{
+     font-size:16px;
+     margin-left:15px;
+ }
+ .water_one{
+height:35px;
+ }
+ .water_one .time{
+    display:inline;
+     float:right;
+     font-style:italic
+ }
+ .water_two{
+font-size:16px;
+font-weight: 700;
+padding-left:5px;
+display:inline
+ }
+
+ .water_two a{
+     color:black;
+     opacity: 0.7;
+ }
+ /* 重写 */
+ /* 河流 */
+ .everyWater .rive{
+     height:25px;
+     margin-left:15px;
+ }
+.everyWater .rive .nextOne{
+width:125px;
+float:left;
+font-weight: 700;
+/* border:1px solid greenyellow; */
+}
+.everyWater .rive .nextTwo{
+    width:100px;
+    float:left;
+    /* border:1px solid greenyellow; */
+    font-weight: 700;
+
+}
+
+/* 水闸 */
+
+.everyWater .gate{
+    height:25px;
+    margin-left:15px;
+}
+.everyWater .gate .nextOne{
+    width:125px;
+   float:left;
+  /* border:1px solid greenyellow; */
+  font-weight: 700;
+
+}
+.everyWater .gate .nextTwo{
+    width:100px;
+    float:left;
+    /* border:1px solid greenyellow; */
+    font-weight: 700;
+
+}
+.circle{
+    height:10px;
+    width:10px;border-radius: 50%;
+    background-color:gray;
+    /* float:left; */
+    margin-top:8px;
+    margin-left:5px;
+}
+.Smallshixin {
+    height:10px;
+    width:10px;
+    border-radius: 50%;
+    background-color:red;
+    margin-top:8px;
+    margin-left: 29px
+}
+.red{
+    height:10px ;
+    width:10px;
+    border-radius: 50%;
+    margin-top:8px;
+    margin-left: 29px;
+    background-color:yellowgreen;
+}
+.Number{
+    float:left;
+    height:20px;
+    width:20px;
+    margin-top:2px;
+    /* line-height: 25px; */
+    /* margin:0 auto; */
+    /* margin-top: -10px; */
+    border-radius: 50%;
+    border:1px solid grey;
+    text-align: center
+
+}
+.content{
+    float:left;
+    display:block;
+    margin-left: 10px;
+    /* background-color: palegreen;; */
+}
+.pumpName{
+    float:left;
+    height:25px;
+    /* border:1px solid red; */
+}
+.everyWater .pumpOne{
+    height:25px;
+    margin-left:15px;
+    font-weight: 700;
+    /* border:1px solid rebeccapurple; */
+}

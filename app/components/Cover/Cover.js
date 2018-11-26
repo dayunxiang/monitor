@@ -32,8 +32,6 @@ class Cover extends React.Component {
             return null;
 
         }
-        
-        
     }
     componentWillUnmount() {
         console.log(this);
@@ -45,5 +43,6 @@ class Cover extends React.Component {
 }
 Cover.propTypes = {
     cover: PropTypes.bool
-}
+};
+
 export default Cover;

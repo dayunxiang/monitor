@@ -1,0 +1,47 @@
+.video .title{
+    height:55px;
+    line-height:55px;
+    border-bottom:1px solid gray;
+}
+.video .title .tit{
+    float:left;
+    font-size:20px;
+    padding-left:15px;
+    color:#3399FF;
+}
+.video .title .tit span{
+    margin-left:15px;
+}
+.video .title .select_one{
+    float:left;
+    margin-left:5%;
+}
+.video .title .select_two{
+    float:left;
+    margin-left:25px;
+}
+.video .title .save{
+    float:right;
+}
+.video .title .down{
+    float:right;
+    margin-left:15px;
+
+}
+/* 内容部分 */
+.content .gutter-example .ant-row > div {
+    background: transparent;
+    border: 0;
+  }
+  .content .gutter-box {
+      height:400px;
+      line-height:400px;
+    background: gray;
+    padding: 5px 0;
+text-align: center;  }
+  .content .gutter-box {
+
+  }
+  .content .gutter-example{
+      margin-top:15px;
+  }

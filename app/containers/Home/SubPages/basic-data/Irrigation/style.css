@@ -1,0 +1,45 @@
+/*水利设施css */
+.ps-tree-search-cont{
+    border: 1px solid #e4e4e4;
+    height: 100%
+}
+.ps-tree-search-cont>ul{
+    height: calc(100% - 68px);
+    overflow: auto;
+}
+.ps-tree-search{
+    padding: 0 5px;
+    margin-top: 5px;
+
+}
+.ps-irrigation-flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    height: 100%;
+    
+}
+.ps-flex-item{
+    align-items: flex-start;
+    flex-grow:0;
+    height: 100%;
+    overflow: auto;
+}
+.ps-flex-item.ps-left-item{
+    width: 250px;
+    z-index: 0;
+}
+.ps-flex-item.ps-right-item{
+    width: calc(100% - 250px);
+    padding-left: 10px;
+}
+.ps-ir-divider{
+    margin: 5px 0;
+}
+.ps-ir-title{
+    font-size: 18px;
+}
+.ps-ir-table{
+    margin-top: 5px;
+}

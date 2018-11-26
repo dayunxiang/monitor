@@ -1,434 +1,510 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
-import {Modal, Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete ,Table } from '../../../../components/Antd.js';
-import BaseSubPage from '../BaseSubPage.js'
-import InboundForm from '../../../../components/InboundForm/InboundForm.js';
-import Toolbar from '../../../../components/Toolbar/Toolbar.js';
-import Cover from '../../../../components/Cover/Cover.js';
-import Scroll from '../../../../components/Scroll/Scroll.js';
-import { cloneObj } from '../../../../util/common.js';
-import moment from 'moment';
-import Vktable from '../../../../components/Vktable/Vktable.js';
+import {Tabs, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete ,Table, Tree, Divider, message, Popconfirm, Spin} from '../../../../components/Antd.js';
+import BaseSubPage from '../BaseSubPage.js';
 // import Test from '../../../../components/test.js';
-// import "./style.css";
+import {irrigation, postDamTree, postRegionTree,control} from '../../../../data/dataStore.js';
 
+// import {cloneObj} from "../../../../../util/common.js"
+import {cloneObj} from "../../../../util/common.js"
+
+import "./style.css";
+const ButtonGroup = Button.Group;
+const Search = Input.Search;
+const Option = Select.Option;
 class Inbound extends BaseSubPage {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            tableData:null, //table的数据
-            tableSelData:null, //当前选中的行数据
-            tableSelDtlData:null, //当前选中后的详细数据
-            formDisable:true, //表单可编辑性
-            cover:false, //遮盖
-            checkedRowData:null, //勾选的行数据,用户删除
-            modalShow: false, //莫泰窗口
-            tableSrcollY:0,
-        }
-        this.index = 100;//测试
-
+            tableData: [], // table的数据
+            activeBtn: 1, //默认选中btn
+        };
     }
-    
     render() {
         const columns = [
-            {title: '单据编号',dataIndex: 'billNo' ,width: "33%"},
-            {title: '单据状态',dataIndex: 'status',width: "33%"},
-            {title: '时间',dataIndex: 'createTime',width: "34%"},
-            
-        ];
-        const dtlColumns = [
-            {title: '物料',dataIndex: 'material' ,width: "33%", type:"Input",render:(text, record) => {
-                if(this.state.cover){
-                    return <Input defaultValue={text} onChange={this.tableDtlInputChange.bind(this,record,"material")}/>;
-                }else{
-                    return text;
-                }
-                
-            }},
-            {title: '数量',dataIndex: 'num',width: "34%",type:"Number", render:(text, record) => {
-                if(this.state.cover){
-                    return <Input defaultValue={text} onChange={this.tableDtlInputChange.bind(this,record,"num")}/>;
-                }else{
-                    return text;
-                }
-            }},
-            
-        ];
-        //
-        let toolbarOpt = {
-            newClick: this.toolbarNewClick.bind(this),
-            editClick: this.toolbarEditClick.bind(this),
-            removeClick:this.toolbarRemoveClick.bind(this),
-            saveClick: this.toolbarSaveClick.bind(this),
-            cancelClick: this.toolbarCancelClick.bind(this),
-            extBtnClick:this.toolbarExtBtnClick.bind(this)
-        };
-        let delMessage = this.state.checkedRowData ? this.state.checkedRowData.map(function(item, i){
-            return item.name;
-        }).join(","):"";
-        
-        return (
-            <div className="vk-subpage" >
-                <Row>
-                    <Col  md={8} >
-                        <Toolbar {...toolbarOpt}/>
-                        <Table ref="table" size={'small'} bordered={false} scroll={{x:250}} 
-                            rowSelection={{onSelect:this.onSelect,onChange:this.onChange.bind(this)}} columns={columns} 
-                            dataSource={this.state.tableData} onRow={(record, index) =>{ return { onClick:this.tableRowClick.bind(this, record, index) }}}
-                            expandedRowRender={record => <p>{'哈哈哈哈哈'}</p>} pagination={{defaultPageSize:30}}/>
-                        {this.state.cover? <Cover cover={this.state.cover} />:null} 
+            {title: '水利设施', dataIndex: 'facilityName', width:'7.7%',align:'center'},
+            {title: '时间', dataIndex: 'time', width: '7.7%',align:'center'},
+            {title: '水位',width: '15.3%', children: [
+                {
+                    title: '内河',
+                    width: '7%',
+                    dataIndex: 'insideWaterLevel',
+                    key: 'nh',
+                    align:'center'
+                    
+                },
+                {
+                    title: '外河',
+                    width:  '7%',
+                    dataIndex: 'outsideWaterLevel',
+                    key: 'wh',
+                    align:'center'
 
-                    </Col>
-                    <Col  md={16} >
-                        <InboundForm formData={this.state.tableSelDtlData} ref="form" disabled={this.state.formDisable} />
-                        
-                            <div className="vktest" style={{height:"150px",overflow:"auto"}}>
-                                <Scroll>
-                                    <div>
-                                        <p>1</p>
-                                        <p>2</p>
-                                        <p>3</p>
-                                        <p>4</p>
-                                        <p>5</p>
-                                        <p>6</p>
-                                    </div>
-                                </Scroll>
-                            </div>
-                        
-                        
-                        <Vktable ref={(node) => {this.vkTable = node;}} size={'small'} bordered={false} scroll={{x:true}} 
-                            rowSelection={{onSelect:null,onChange:null}} columns={dtlColumns} tempKey="vk-mt"
-                        />
-                    </Col>
-                </Row>
-                <Modal
-                  title="是否删除?"
-                  visible={this.state.modalShow}
-                  onOk={this.modalOkClick.bind(this)}
-                  onCancel={this.modalCancelClick.bind(this)}
+                }
+            ]},
+            {title: '闸位', width: '23%' , children: [
+                {
+                    title: '内闸',
+                    align:'center',
+                    width:  '7%',
+                    dataIndex: 'insideGateState',
+                    key: 'nz',
+                    render:insideGateState =>{ 
+                        if(insideGateState===3102){
+                          return '关闭'
+                        } else if(insideGateState===3101){
+                          return '打开'
+                        }
+                       },
+                },
+
+               
+                {
+                    title: '外闸',
+                    align:'center',
+                    width: '7%',
+                    dataIndex: 'outsideGateState',
+                    key: 'wz',
+                    render:outsideGateState =>{ 
+                        if(outsideGateState===3102){
+                          return '关闭'
+                        } else if(outsideGateState===3101){
+                          return '打开'
+                        }
+                       },
+                },
+                {
+                    title: '节制闸',                   
+                    align:'center',
+                    width: '7%',
+                    dataIndex: 'checkGateState',
+                    key: 'jzz',
+                    render:checkGateState =>{ 
+                        if(checkGateState===3102){
+                          return '关闭'
+                        } else if(checkGateState===3101){
+                          return '打开'
+                        }
+                       },
+                }
+            ]},
+            {title: '水泵', width: '46%', children: [
+                {
+                    title: '水泵1',
+                    width: '7%',
+                    align:'center',
+                    dataIndex: 'pumpList[0]',
+                    key: 'sb1',
+                    render:( text, record, index) =>{ 
+                        if( record.pumpList[0]!=null &&  record.pumpList[0].pumpState!=null && record.pumpList[0]!='undefind' && record.pumpList[0].pumpState!='undefind'){
+            
+                            if(  record.pumpList[0].pumpState===0){
+                                return  '关闭'
+                                }  else if( record.pumpList[0].pumpState===1){
+                                    return '开启'
+                                }
+                        }
+                       }
+                },
+
+                {
+                    title: '水泵2',
+                    width: '7%',
+                    align:'center',
+                    dataIndex: 'pumpList[1].pumpState',
+                    key: 'sb2',
+                    render:( text, record, index) =>{ 
+                        if( record.pumpList[1]!=null &&  record.pumpList[1].pumpState!=null && record.pumpList[1]!='undefind' && record.pumpList[1].pumpState!='undefind'){
+            
+                            if(  record.pumpList[1].pumpState===0){
+                                return  '关闭'
+                                }  else if( record.pumpList[1].pumpState===1){
+                                    return '开启'
+                                }
+                        }
+                       }
+                },
+                {
+                    title: '水泵3',
+                    width: '7%',
+                    align:'center',
+                    dataIndex: 'pumpList[2].pumpState',
+                    key: 'sb3',
+                    render:( text, record, index) =>{ 
+                        if( record.pumpList[2]!=null &&  record.pumpList[2].pumpState!=null && record.pumpList[2]!='undefind' && record.pumpList[2].pumpState!='undefind'){
+            
+                            if(  record.pumpList[2].pumpState===0){
+                                return  '关闭'
+                                }  else if( record.pumpList[2].pumpState===1){
+                                    return '开启'
+                                }
+                        }
+                       }
+                },
+                {
+                    title: '水泵4',
+                    width: '7%',
+                    align:'center',
+                    dataIndex: 'pumpList[3].pumpState',
+                    key: 'sb4',
+                    render:( text, record, index) =>{ 
+                        if( record.pumpList[3]!=null &&  record.pumpList[3].pumpState!=null && record.pumpList[3]!='undefind' && record.pumpList[3].pumpState!='undefind'){
+            
+                            if(  record.pumpList[3].pumpState===0){
+                                return  '关闭'
+                                }  else if( record.pumpList[3].pumpState===1){
+                                    return '开启'
+                                }
+                        }
+                       }
+                },
+                {
+                    title: '水泵5',
+                    width: '7%',
+                    align:'center',
+                    dataIndex: 'pumpList[4].pumpState',
+                    key: 'sb5',
+                    render:( text, record, index) =>{ 
+                        if( record.pumpList[4]!=null &&  record.pumpList[4].pumpState!=null && record.pumpList[4]!='undefind' && record.pumpList[4].pumpState!='undefind'){
+            
+                            if(  record.pumpList[4].pumpState===0){
+                                return  '关闭'
+                                }  else if( record.pumpList[4].pumpState===1){
+                                    return '开启'
+                                }
+                        }
+                       }
+                },
+                {
+                    title: '水泵6',
+                    width: '7%',
+                    align:'center',
+                    dataIndex: 'pumpList[5].pumpState',
+                    key: 'sb6',
+                    render:( text, record, index) =>{ 
+                        if( record.pumpList[5]!=null &&  record.pumpList[5].pumpState!=null && record.pumpList[5]!='undefind' && record.pumpList[5].pumpState!='undefind'){
+            
+                            if(  record.pumpList[5].pumpState===0){
+                                return  '关闭'
+                                }  else if( record.pumpList[5].pumpState===1){
+                                    return '开启'
+                                }
+                        }
+                       }
+                },
+            ]},
+            // {title: '其他', width: 100, children: [
+            //     {
+            //         title: '视频设备',
+            //         width: 100,
+            //         dataIndex: 'cameraState',
+            //         key: 'spsb',
+            //         render:cameraState =>{ 
+            //             if(cameraState===0){
+            //               return '关闭'
+            //             } else if(cameraState===1){
+            //               return '打开'
+            //             }
+            //            },
+            //     },
+            //     {
+            //         title: '网络设备',
+            //         width: 100,
+            //         dataIndex: 'networkState',
+            //         key: 'wlsb',
+            //         render:networkState =>{ 
+            //             if(networkState===0){
+            //               return '关闭'
+            //             } else if(networkState===1){
+            //               return '打开'
+            //             }
+            //            },
+                // }
+            // ]}
+        ];
+        // 判断
+        let NextuserMessage;
+        let NextuserMessage1
+        // let userMes;
+        // 时间组件
+        // const RangePicker = DatePicker.RangePicker
+        if(this.state.activeBtn ===1){
+            NextuserMessage=(
+                <Tree 
+                // checkStrictly={false}
+                defaultExpandAll={true}
+                // defaultExpandAll={true}
+                onSelect={this.onSelect.bind(this)}
                 >
-                  {"删除这些吗"+delMessage}
-                </Modal>
+                {this.handlerTreeNode(
+                  this.state.treeData && this.state.treeData.damTreeData
+                    )}
+            </Tree>
+            )
+        } else if(this.state.activeBtn ===2){
+            NextuserMessage1=(
+                <Tree  checkable
+                multiple={true}
+                disableCheckbox={true} 
+                onCheck={this.onCheck.bind(this)}
+                defaultExpandAll={true}
+                checkStrictly={true}
+                >
+                {this.handlerTreeNode(
+                this.state.treeData && this.state.treeData.regionTreeData
+                    )}
+             </Tree>
+        ) } 
+        return (
+            this.state.loading ? 
+            <div className="vk-subpage vk-subpage-loading" ><Spin size="large" /></div> : 
+            <div className="vk-subpage">
+                <div className="ps-irrigation-flex">
+                    <div className="ps-flex-item ps-left-item">
+                        <div className="ps-tree-search-cont">
+                            <ButtonGroup style={{width:"100%"}}>
+                                <Button type="default" style={{width: "50%"}} className={this.state.activeBtn === 1 ? "active": ""} onClick={this.onbtnClick.bind(this, 1)}>
+                                    控制区结构
+                                </Button>
+                                <Button type="default" style={{width: "50%"}} className={this.state.activeBtn === 2 ? "active": ""} onClick={this.onbtnClick.bind(this, 2)}>
+                                    行政区结构
+                                </Button>
+                            </ButtonGroup>
+                            <Search className="ps-tree-search"
+                                placeholder="模糊查找"
+                                style={{ width: "100%"}}
+                                onChange={this.throttle(this.searchChange, 300).bind(this)}
+                            />
+                             {NextuserMessage}
+                             {NextuserMessage1}
+                            
+                        </div>
+                    </div>
+                    <div className="ps-flex-item ps-right-item">
+                        <Row>
+                            <Col xs={24} >
+                                <div className="zs-table-cont">
+                                <div className="psdh">
+                                <Table ref="table"  bordered={true} 
+                             columns={columns} 
+                             dataSource={this.state.tableData} onRow={(record, index) =>{ return { onClick: this.tableRowClick.bind(this, record, index) }}}
+                             pagination={{defaultPageSize:45}}/>
+                                </div>
+                               
+                                </div>
+                            </Col>
+                            
+                           
+                        </Row>
+                    </div>
+
+                </div>
+                
             </div>
-            
-        )
+        );
     }
-    
-    componentDidMount() {
-        super.componentDidMount();
-        this.handlerTableFns();
-        this.loadTableData();
-    }
-    componentWillUnmount(){
-        super.componentWillUnmount();
-        window.removeEventListener("resize", this.onresize);
-    }
-    
-    //处理表格的方法,主要表格撑长
-    handlerTableFns() {
-         let offset = 200;
-        this.setState({
-            tableSrcollY: (window.innerHeight > 500 ? (window.innerHeight - offset) : (500 - offset))
-        });
-        
-        // let offset = 200;
-        let table = this.refs.table;
-        let tableDom = ReactDOM.findDOMNode(table);
-        let tableBodyDom = tableDom.getElementsByClassName("ant-table-body")[0];
-        tableBodyDom.style.height = (window.innerHeight > 500 ? (window.innerHeight - offset-4) : (500 - offset)) + 'px';
-        this.onresize = () => {
-            this.setState({
-                tableSrcollY: (window.innerHeight > 500 ? (window.innerHeight - offset) : (500 - offset))
-            });
-            tableBodyDom.style.height = (window.innerHeight > 500 ? (window.innerHeight - offset) : (500 - offset)) + 'px';
+    // 点击树形
+    onSelect = (selectedKeys, info, node, event) => {
+        this.ID=selectedKeys[0];   //点击具体 
+         console.log(selectedKeys[0],'selectedKeys[0]')
+        this.irrigationn()
 
-        }
-        window.addEventListener("resize", this.onresize);
     }
-    modalOkClick(e){
-        
-        window.setTimeout(() => {
-            this.setState({
-                modalShow:false
-            });
-            Modal.success({
-                title: '成功',
-                content: '删除成功.',
-            });
-            let nowdata = this.state.tableData.filter((item) => {
-                let flag = true;
-                let checkData = this.state.checkedRowData;
-                for (var i = 0; i < checkData.length; i++) {
-                    var d = checkData[i];
-                    if (item.key === d.key) {
-                        flag = false;
-                    }
+
+    // 点击行政区
+    // onSelectregion=(selectedKeys,info, node, event)=>{
+    //  this.list=selectedKeys
+    //  console.log(this.list,'this.list')
+    // }
+
+    // 点击复选框触发
+    onCheck=(defaultCheckedKeys)=>{
+        this.list=defaultCheckedKeys.checked;
+        this.administration()  //行政区
+        // console.log(defaultCheckedKeys.checked,'checkedKeys')
+    }
+    // 点击事件
+    onbtnClick(key, e) {
+        this.setState({
+            activeBtn: key
+        })
+    }
+   
+    filterData(data, keywords) {
+        if (!Array.isArray(data)) return;
+        return data.filter((item) => {
+            let flag = false;
+            if (item.title.indexOf(keywords) > -1) {
+                flag = true;
+            }else{
+                flag = false;
+            }
+            if (item.children && item.children.length) {
+                item.children = this.filterData(item.children, keywords);
+                if (item.children.length) {
+                    flag = true;
                 }
-                return flag;
-            });
-            this.setState({
-                tableData:nowdata
-            });
-        },1000);
+            }
+            return flag;
+        })
     }
-    modalCancelClick(e){
-        this.setState({
-            modalShow:false
-        });
+    throttle(method, delay) {
+        var timer=null;
+        return function(...args) {
+            // var context = this, args = arguments;
+            let value = args[0].target.value;
+            window.clearTimeout(timer);
+            timer = window.setTimeout(()=> {
+                method.apply(this, [value]);
+            }, delay);
+        };
     }
-
-    //表格勾选
-    onChange(selectedRowKeys, selectedRows) {
-        console.log("onChange",selectedRowKeys, selectedRows );
+     //表格勾选
+     onChange(selectedRowKeys, selectedRows) {
+        // console.log("onChange",selectedRowKeys, selectedRows );
         this.setState({
             checkedRowData:selectedRows
         });
 
     }
-    loadTableData() {
-        let columns = [];
-        for (var i = 0; i < 74; i++) {
-            columns.push({key:i, billNo:"2017110821212121212121212"+i, createTime:"2017-11-08 12:12:12", status:"10", applyMan:"taosy", warehouse:"1",
-                            // materialDtl:[
-                            //     {key:i,id:"102",material:"猕猴桃",num:"20"+i}
-                            // ]
-                        })
+    rowClassName(record, index ) {
+        var selData = this.state.tableSelData;
+        if (selData && selData.key === record.key) {
+            return "row-highlight";
+            
+        }else{
+            return "";
         }
-        this.setState({
-            tableData:columns
-        })
+    }
 
-    }
-    tableRowClick(record, index, event) {
-        // console.log(record, index, event);
-        this.setState({
-            tableSelData: record
-        });
-        window.setTimeout(() => {
-            let dtlData = {
-                billNo:"201711080001",
-                createTime:"2017-11-08 12:12:12",
-                status:"10",
-                applyMan:"taosy",
-                warehouse:"1",
-                materialDtl:[
-                    {key:1,id:"102",material:"猕猴桃",num:"201"}
-                ]
+    // 树
+    handlerTreeNode(node) {
+        if (!Array.isArray(node)) return;
+        var treeNodes = [];
+        for (var i = 0; i < node.length; i++) {
+            var n = node[i];
+            var treeNode = <Tree.TreeNode title={n.title} key={n.id} entity={n}></Tree.TreeNode>;
+            if (n.children && n.children.length) {
+                var nodes = this.handlerTreeNode(n.children);
+                treeNode = <Tree.TreeNode title={n.title} key={n.id} entity={n} >{nodes} </Tree.TreeNode>;
             }
-            this.setState({
-                tableSelDtlData: dtlData
-            }, () => {
-                this.fillForm();
-            });
-        },0);
-        
-    }
-    toolbarExtBtnClick(state, item){
-        if (item.key == "next") {
-            console.log("next")
-            this.state.tableData[20].billNo = 123;
-            this.forceUpdate();
+            treeNodes.push(treeNode);
         }
+        return treeNodes;
     }
-    toolbarNewClick(success){
-        success();
-        this.newForm();
-        this.setState({
-            formDisable:false,
-            cover:true,
-        });
+    componentDidMount() {
+        super.componentDidMount();
+        this.irrigationn()
+        this.loadData()
     }
-    toolbarEditClick(success){
-        if (this.state.tableSelDtlData) {
-            success();
-            this.setState({
-                formDisable:false,
-                cover:true,
-            });
-            this.editForm();
-        }else{
-            Modal.warning({
-                title: '对不起',
-                content: '请先单击修改行!',
-            });
-        }
-        
+    componentWillUnmount() {
+        super.componentWillUnmount();
+        window.removeEventListener("resize", this.onresize);
     }
-    toolbarRemoveClick(){
-        if (this.state.checkedRowData && this.state.checkedRowData.length) {
-            this.setState({
-                modalShow:true
-            });
-        }else{
-            Modal.warning({
-                title: '对不起',
-                content: '请先选择待删除行!',
-            });
-        }
-        
-  //    Modal.warning({
-        //     title: '确认',
-        //     content: 'some messages...some messages...',
-        //     maskClosable:true,
-        //     cancelText: "取消",
-        //     okText:"确定",
-        //     onOk:function(a){
-        //      console.log(a, a());
-        //      ;
+        // 交互部分    默认展示接口
+    async loadData() {
+        // let wlPromise = irrigation({}).then((res) =>{ return res.ok ? res.json() : Promise.reject("接口出错");}).then((data) => {
+        //     if (data.code === 200) {
+        //         return data.data;
         //     }
+        //     return Promise.reject(data.msg);
         // });
-    }
-    //status 表示新增2还是修改3,
-    toolbarSaveClick(status, success, error){
-        var form = this.refs.form.getForm();
-        form.validateFields(
-          (err) => {
-            if (!err) {
-                // 
-                var vals = this.getFormValue();
-                var tableData = this.vkTable.getData();
-                console.log(tableData);
-                window.setTimeout(() => {
-                    success();
-                    this.vkTable.ownerFill();
-                    form.resetFields();
-                    if (status === 2) { //新增
-                        // var formData = {key:100, billNo:vals.billNo, createTime:vals.billTime, status:vals.billStatus, applyMan:vals.applyMan, warehouse:vals.warehouse};
-                        // this.state.tableData.push(formData);
-                        // var dtlData = Object.assign({},formData,{materialDtl: this.state.tableDtlData})
-                        // this.setState({
-                        //     tableData:this.state.tableData,
-                        //     tableSelData: formData,
-                        //     tableSelDtlData: dtlData,
-                        //     formDisable:true,
-                        //     cover:false,
-                        //     tableDtlData:null
-                        // },() => {
-                        //     this.fillForm();
-                        // });
-                    }else{ //修改
-                        // var data = { billNo:vals.billNo, createTime:vals.billTime, status:vals.billStatus, applyMan:vals.applyMan, warehouse:vals.warehouse};
-                        // var nowData = null;
-                        // this.state.tableData.forEach((item) => {
-                        //     if (item.key === this.state.tableSelData.key) {
-                        //         nowData = Object.assign(item,data);
-                        //         return false;
-                        //     }
-                        // });
-                        // this.state.tableSelDtlData.materialDtl = this.state.tableDtlData;
-                        // var dtlData = Object.assign(this.state.tableSelDtlData,data);
-                        
-                        // this.setState({
-                        //     tableData:this.state.tableData,
-                        //     tableSelData: nowData,
-                        //     tableSelDtlData: dtlData,
-                        //     formDisable:true,
-                        //     cover:false,
-                        //     tableDtlData:null
-                        // },() => {
-                        //     this.fillForm();
-                        // });
-                    }
-                    
-                },1000)
-
-            }else{
-                error();
+        let damTreePromise = postDamTree().then((res) =>{ return res.ok ? res.json() : Promise.reject("控制区树接口出错");}).then((data) => {
+            if (data.code === 200) {
+                return data.data;
+                // console.log(data.data,'控制区树')
             }
-          },
-        );
-        
-        
+           
+            return Promise.reject(data.msg);
+        });
+        let regionTreePromise = postRegionTree().then((res) =>{ return res.ok ? res.json() : Promise.reject("行政区树接口出错");}).then((data) => {
+            if (data.code === 200) {
+                return data.data;
+            }
+            return Promise.reject(data.msg);
+        });
+        let data = await Promise.all([ damTreePromise, regionTreePromise ]).then((data) => {
+            return data;
+        }).catch(ex => { return ex;})
+        if (Array.isArray(data) && data.length ) {
+           // let wlData = data[0];  //默认展示
+            // wlData.forEach((item) => {
+            //     item.key = item.id
+            // })
+            let damTreeData = [data[0]];  //控制区
+            let regionTreeData = [data[1]];  //行政区
+            this.setState({
+                loading: false,
+                // tableData:wlData,
+                treeData: {damTreeData, regionTreeData}
+            })
+            this.treeData = {damTreeData, regionTreeData};//记录一下 用于搜索
+        }else{
+            this.setState({
+                loading: false
+            });
+            message.error(data ||  "服务器异常!",5);
+        }
+
     }
-    toolbarCancelClick(){
-        var form = this.refs.form.getForm();
-        form.resetFields();
+     // 树形搜索
+     searchChange(value) {
+        if (!this.treeData || !this.treeData.damTreeData || !this.treeData.regionTreeData) return;
+        let damData = this.treeData.damTreeData;
+        let regionTree = this.treeData.regionTreeData;
         this.setState({
-            formDisable:true,
-            cover:false,
-        });
-        this.cancelForm();
-    }
-    //获取表单的对象
-    getFormValue(){
-        var form = this.refs.form.getForm();
-        var vals = form.getFieldsValue();
-        return {
-            ...vals,
-            billTime: vals.billTime.format('YYYY-MM-DD HH:mm:ss')
-        }
-    }
-    //填充表单
-    fillForm(){
-        var form = this.refs.form.getForm(), selData = this.state.tableSelDtlData;
-        if (selData) {
-            form.setFieldsValue({
-                billNo: selData.billNo,
-                billTime: moment(selData.createTime, 'YYYY-MM-DD HH:mm:ss'),
-                billStatus:selData.status,
-                applyMan: selData.applyMan,
-                warehouse: selData.warehouse,
-                isnotic:true
-            });
-            this.vkTable.fill(selData.materialDtl)
-        }
+            treeData: {
+                damTreeData: this.filterData(cloneObj(damData), value),
+                regionTreeData: this.filterData(cloneObj(regionTree), value)
+            }
+        })
         
     }
-    cleanForm() {
-        var form = this.refs.form.getForm();
-        form.setFieldsValue({
-            billNo: "",
-            billTime: moment('2018-01-02 12:12:12', 'YYYY-MM-DD HH:mm:ss'),
-            billStatus:"",
-            applyMan: "",
-            warehouse: ""
-        });
-    }
-    newForm() {
-        var form = this.refs.form.getForm();
-        form.setFieldsValue({
-            billNo: "",
-            billTime: moment('2018-01-02 12:12:12', 'YYYY-MM-DD HH:mm:ss'),
-            billStatus:"",
-            applyMan: "",
-            warehouse: ""
-        });
-        this.vkTable.new();
-    }
-    editForm() {
-        var form = this.refs.form.getForm(), selData = this.state.tableSelDtlData;
-        if (selData) {
-            form.setFieldsValue({
-                billNo: selData.billNo,
-                billTime: moment(selData.createTime, 'YYYY-MM-DD HH:mm:ss'),
-                billStatus:selData.status,
-                applyMan: selData.applyMan,
-                warehouse: selData.warehouse,
-                isnotic:true
-            });
-            this.vkTable.edit(selData.materialDtl);
+    // 这是点击控制区树展示的
+    async irrigationn() {
+        let param={
+            damDomainIds:this.ID  ? this.ID : ''
+        }
+        let data = await control(param).then((res) =>{ return res.json();}).catch(ex => {});
+        if (data && data.data ) {
+            // console.log(data.data,'水利设施内容')
+            //  var tableDate3=data.data.targetRecordList;  
+            // var tt=tableDate3.map((item,index)=>{
+            //     return item   //六个中的每一个
+            // })   
+            // var xx=tableDate3.map((item,index)=>{
+            //     return item.subTargetRecordList;   //六个中的每一个
+            // })
+            this.setState({
+                loading: false,
+                 tableData:data.data,     
+            })
         }
     }
-    cancelForm() {
-        var form = this.refs.form.getForm(), selData = this.state.tableSelDtlData;
-        if (selData) {
-            form.setFieldsValue({
-                billNo: selData.billNo,
-                billTime: moment(selData.createTime, 'YYYY-MM-DD HH:mm:ss'),
-                billStatus:selData.status,
-                applyMan: selData.applyMan,
-                warehouse: selData.warehouse,
-                isnotic:true
-            });
-            this.vkTable.setEnable(false).setData(selData.materialDtl);
+    // 行政区树
+    async administration () {
+        let param={
+            facilityInfoIds:this.list  ? this.list : ''
         }
-        this.vkTable.fill(selData && selData.materialDtl);
+        let data = await irrigation(param).then((res) =>{ return res.json();}).catch(ex => {});
+        if (data && data.data ) {
+            // console.log(data.data,'水利设施内容')
+            //  var tableDate3=data.data.targetRecordList;  
+            // var tt=tableDate3.map((item,index)=>{
+            //     return item   //六个中的每一个
+            // })   
+            // var xx=tableDate3.map((item,index)=>{
+            //     return item.subTargetRecordList;   //六个中的每一个
+            // })
+            this.setState({
+                loading: false,
+                 tableData:data.data,     
+            })
+        }
     }
- 
-    
-   
+    componentWillUnmount() {
+        super.componentWillUnmount();
+    }
+    tableRowClick(record, index) {
 
-    
-}
-
+    }}
 export default Inbound;

@@ -1,0 +1,57 @@
+.ps-log-cont{
+    /*text-align: center;*/
+    
+    overflow: auto;
+}
+.ps-log-cont .ant-steps{
+    min-width: 1100px;
+}
+.ps-log-item{
+    position: relative;
+    text-align: center;
+    /*overflow: hidden;*/
+}
+.ps-log-item:after {
+    display: table;
+    clear: both;
+    content: " ";
+}
+.vk-log-item-title{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+.vk-log-item-name{
+    position: relative;
+    top: -5px;
+    float: right;
+    width: 100%;
+    text-align: left;
+    padding-left: 10px;
+}
+.vk-log-item-line{
+    position: absolute;
+    left: 0px;
+    background: #1890ff;
+    height: 100%;
+    width: 2px;
+    transform: translate(-50%,0);
+    margin: auto;
+}
+.vk-log-item-dot{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 10px;
+    width: 10px;
+    transform: translate(-50%,0);
+    background: #fa8c16;
+    border-radius: 50%;
+}
+.ps-log-cont .ant-steps-item-description{
+    max-width: 300px!important;
+    width: 200px;
+}
+.ps-log-loadingcont{
+    text-align: center;
+}

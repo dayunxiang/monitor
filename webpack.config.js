@@ -8,7 +8,7 @@ module.exports = {
     entry: './app/index.js',
     output: {
         path: path.join(__dirname, "build"),
-        filename: "app.build.js",
+        filename: "app.build.[name].js",
         publicPath: '/',
         chunkFilename: "app.build.[name].js",
     },
@@ -20,7 +20,7 @@ module.exports = {
             query: {
                 presets: ['env', 'react', 'stage-1'],
                 plugins: [
-                    //"transform-runtime",
+                    "transform-runtime",
                     //["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }], // `style: true` 会加载 less 文件
                     ["transform-decorators-legacy"]
                 ],
@@ -36,18 +36,18 @@ module.exports = {
 
 
         }, {
-            test: /\.(png|jpg)$/,
+            test: /\.(png|jpg|gif)$/,
             loader: 'url-loader',
             query: {
                 limit: 8192,
-                name: path.join("img", "[name].[hash:5].[ext]")
+                name: ("img/[name].[ext]")
             }
         },
         {
             test: /\.(woff|woff2|svg|eot|ttf)$/,
             loader: 'file-loader?',
             options: {
-                name: ("font/[name].[hash:5].[ext]"),
+                name: ("font/[name].[ext]"),
                 publicPath: "./"
             }
         }
@@ -63,26 +63,31 @@ module.exports = {
     //   },
     plugins: [
         new webpack.DefinePlugin({
-            DEV: JSON.stringify(true)
+            _DEV_: JSON.stringify(true)
         }),
         // new webpack.optimize.UglifyJsPlugin(),
         new HtmlWebpackPlugin({
             title: "超市管理系统",
             template: "./index.html",
-            favicon: "./favicon.png"
+            favicon: "./favicon.png",
+            // chunks: ["videoLib"]
         })
 
     ],
+    
     devServer: {
         proxy: {
             '/api/*': {
-                target: 'http://127.0.0.1:8085',
-                // pathRewrite: {'^/api' : 'api'},
+                target: 'http://127.0.0.1:8088',
+                pathRewrite: {'^/api' : ''},
                 secure: false,
                 changeOrigin: true,
             }
         },
-    // historyApiFallback: true,
+        // historyApiFallback:{
+        //     index:'./build/index.html'
+        // },
+        // historyApiFallback: true,
     //   hot: true,
     // inline: true,
     // stats: { colors: true },

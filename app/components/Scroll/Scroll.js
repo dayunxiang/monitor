@@ -21,6 +21,7 @@ class Srcoll extends React.Component {
             overflow: "hidden"
         };
         let barStyle = {
+            background: this.props.barColor || "white",
             height: this.state.wrapH && this.state.originDivH && this.state.originDivH > this.state.wrapH ? (this.state.wrapH *this.state.wrapH /this.state.originDivH): 0,
             opacity: this.state.showBar && this.state.originDivH > this.state.wrapH ? 1 : 0,
             top: this.state.barTop
@@ -46,8 +47,13 @@ class Srcoll extends React.Component {
         let childrenDiv = this.wrap.children[0];
         if (!childrenDiv) { return; }
         let originDivH = childrenDiv.clientHeight;
-        console.log(parentH, originDivH);
-        let top = this.state.barTop;
+
+        let xs = (originDivH - parentH);
+        let scorllSpace = parentH - parentH * parentH / originDivH;
+        let goPx = xs / scorllSpace;
+        let barTop = this.wrap.scrollTop/goPx;
+
+        let top = barTop;
         let barHeight = parentH && parentH && originDivH > parentH ? (parentH*parentH/originDivH) : 0;
         if (this.state.barTop + barHeight > parentH) {
             top = parentH - barHeight;
@@ -55,8 +61,8 @@ class Srcoll extends React.Component {
         this.setState({
             originDivH: originDivH,
             wrapH: parentH,
-            barTop:top,
-            showBar:1 ,
+            barTop: top,
+            showBar: 1
         });
     }
     componentDidMount() {
@@ -66,7 +72,7 @@ class Srcoll extends React.Component {
                 this.reset();
             },300);
         };
-        window.addEventListener("resize", this._windowResize);
+       
     }
     componentWillUnmount() {
         window.removeEventListener("resize", this._windowResize);
@@ -76,11 +82,11 @@ class Srcoll extends React.Component {
     }
     srcollContentMouseEnter(e) {
         e.preventDefault();
-        this.setState({
-            showBar: 1
-        });
+        // this.setState({
+        //     showBar: 1
+        // });
         
-        // this.reset();
+        this.reset();
     }
     srcollContentMouseLeave(e) {
         e.preventDefault();
@@ -96,9 +102,9 @@ class Srcoll extends React.Component {
     }
     srcollContentMouseWheel(e) {
         if(e.detail==-3 || e.wheelDelta < 0 || e.deltaY <0 ) {//上
-            this._barMove(-10);
+            this._barMove(-20);
         }else{
-            this._barMove(10);
+            this._barMove(20);
         }
         
     }

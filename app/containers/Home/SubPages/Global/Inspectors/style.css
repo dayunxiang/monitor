@@ -1,0 +1,352 @@
+/* 覆盖巡查 */
+.check_cover_t{
+    height:45px;
+    /* line-height:45px; */
+    border-bottom:1px solid gray;
+}
+.check_cover_t span{
+    /* height:45px;
+    line-height:45px;
+    font-size:20px;
+    font-weight:900; */
+}
+.check_cover_t span{
+    float:left;
+font-size:20px;
+margin-left:15px;
+font-weight:900; 
+
+}
+.check_cover_t .first{
+    float:right;
+    /* margin-left:35%;
+    margin-right:15px; */
+}
+.check_cover_t .two{
+float:right;
+margin-right:45px; 
+margin-left:15px;
+}
+/* 进度条 */
+.check_cover_m{
+    margin-top:15px;
+    height:60px;
+    /* line-height:60px; */
+    border-bottom:1px solid gray;
+}
+.check_cover_m .name-r{
+    float:left;
+    height:30px;
+    width:100px;
+    line-height: 30px;
+    background-color:black;
+    color:#ffffff;
+    margin-left:15px;
+
+}
+.check_cover_m .name-l{
+    float:left;
+    height:30px;
+    width:100px;
+    line-height: 30px;
+    background-color:black;
+    color:#ffffff;
+    margin-left:15px;
+
+}
+
+.check_cover_m .pro-l{
+    float:left;
+    width:400px;
+    /* border:1px solid red; */
+}
+
+.ll{
+    float:left;
+    /* border:1px solid red; */
+    width:400px；
+}
+.rr{
+    float:left;
+    margin-left:35px;
+    /* border:1px solid yellow; */
+    width:400px；
+}
+.check_cover_m .pro-r{
+    float:left;
+    width:400px;
+    /* border:1px solid red; */
+}
+/* .ant-progress-outer{
+    width:45% !important;
+} */
+/* 进度条部分 */
+.check_cover_b .zf-Steps{
+    margin-left:5%;
+    margin-top:15px;
+    width:90% !important;
+    margin-bottom:15px;
+}
+.check_cover_b .zf-Steps .big span{
+    height:15px;
+    /* background-color:yellowgreen; */
+    margin-left:5px;
+    border-radius:5px;
+    border:1px solid gray;
+}
+.check_cover_b .zf-Steps .small {
+    width:200px;
+    height:65px;
+    /* border:1px solid red; */
+}
+.check_cover_b .zf-Steps .small .conent .spn{
+    height:15px;
+    background-color:rgb(255,255,204);
+    margin-left:5px;
+    border-radius:5px;   
+    border:1px solid gray;
+    /* width:220px; */
+
+}
+.check_cover_b .zf-Steps .small .bg{
+    background-color:rgb(255,255,204);
+    margin-left:5px;
+    border-radius:5px; 
+    height:15px;
+ 
+}
+.Smallshixin {
+    height:10px;
+    width:10px;
+    border-radius: 50%;
+    background-color:red;
+}
+.check_cover_b .one{
+    float:left;
+    margin-left:5%;
+
+}
+.check_cover_b .two{
+    margin-left:5%;
+
+    float:left;
+}
+
+.check_cover_b .tree{
+    float:left;
+    margin-left:5%;
+
+}
+.check_cover_b .four{
+    float:left;
+    margin-left:5%;
+
+}
+.check_cover_b .five{
+    float:left;
+    margin-left:5%;
+
+}
+.check_cover_b .six{
+    float:left;
+    margin-left:15px;
+
+}
+/* .check_cover_b .one Steps Step{
+    height:15px;width:100px;
+    border:1px solid rebeccapurple;
+} */
+
+/* 自己写Steps部分 */
+.zf-show3{
+    float:left;
+    margin-left:2%;
+}
+
+.check_cover_b .zf-Steps .big{
+    height:28px;
+}
+.check_cover_b .zf-Steps .big .dirct{
+    width:25px;
+    height:25px;
+    border:2px solid blue;
+    border-radius:50%;
+    float:left;
+}
+.check_cover_b .zf-Steps .big .title{
+    border:1px solid gray;
+    float:left;
+    margin-left:5px;
+    border-radius:5px;
+}
+.check_cover_b .zf-Steps .big .line{
+    float:left;
+    border:2px solid gray;
+    width:25px;
+    /* line-height: 1px; */
+   height:1px;
+   margin:0 auto;
+   text-align: center;
+   /* padding:0px; */
+   overflow:hidden;
+   margin-top:12px;
+
+}
+/* 下面详细部分 */
+/* .check_cover_b .zf-Steps .big{
+    height:28px;
+} */
+.check_cover_b .zf-Steps .small .conent{
+    /* width:200px; */
+    height:30px;
+    /* border:1px solid  blueviolet; */
+}
+.check_cover_b .zf-Steps .small .small-dirct{
+    width:18px;
+    height:18px;
+    border:2px solid red;
+    border-radius:50%;
+    margin-left:2px;
+    float:left;
+}
+.check_cover_b .zf-Steps .small .small-title{
+    border:1px solid gray;
+    float:left;
+    width:45px;
+    margin-left:5px;
+    border-radius:5px;
+}
+.check_cover_b .zf-Steps .small .small-line{
+    /* float:left; */
+    border:2px solid gray;
+    width:1px;
+    /* line-height: 1px; */
+   height:25px;
+   /* margin:0 auto; */
+   /* text-align: center; */
+   /* padding:0px; */
+   overflow:hidden;
+   margin-left:10px;
+
+}
+/* 问题上报部分 */
+ 
+.subpage .problem_report{
+    height:55px;
+    line-height:55px;
+    border-bottom:1px solid gray !important;
+    border-bottom:25px;
+}
+.subpage .problem_report .One{
+    float:left;
+    height:45px;
+    line-height:45px;
+    font-size:20px;
+    font-weight:900;
+}
+.subpage .problem_report .Two{
+    float:right;
+    margin-left:235px;
+    width:400px !important;
+}
+.problem_report  .btn{
+    float:right;
+    margin-right:35px;
+}
+.subpage .log_show{
+    margin-top:10px;
+}
+/* 日志部分 */
+.editable-cell {
+    position: relative;
+  }
+  
+  .editable-cell-value-wrap {
+    padding: 5px 12px;
+    cursor: pointer;
+  }
+  
+  .editable-row:hover .editable-cell-value-wrap {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    padding: 4px 11px;
+  }
+  /* 日志 */
+  .vip .title {
+      height:35px;
+      width:185px;
+      border:1px solid gray;
+      border-radius:5px;
+      line-height:35px;
+  }
+.vip .content_steps{
+    margin-top:25px;
+    margin-left:5%;
+    /* margin-bottom:20px; */
+}
+.content_steps .Big{
+    margin-bottom:20px;
+    width:1100px;
+}
+.content_steps .one{
+    float:left;
+    margin-left:0%;
+    width:120px;
+
+}
+.content_steps .two{
+    margin-left:7%;
+    width:120px;
+
+    float:left;
+}
+.content_steps .tree{
+    float:left;
+    margin-left:7%;
+    width:120px;
+
+}
+.content_steps .four{
+    float:left;
+    margin-left:7%;
+    width:120px;
+
+
+}
+.content_steps .five{
+    float:left;
+    margin-left:7%;
+    width:120px;
+
+}
+.content_steps .six{
+    float:left;
+    margin-left:7%;
+    width:120px;
+
+
+}
+
+/* .ant-table-thead tr th{
+    border-top-color: black !important;
+    border-right-color: black !important;
+    border-bottom-color: black !important;
+    border-left-color: black !important;
+}
+ */
+ .subpage .ant-table-thead tr th{
+     color:#FFFFFF;
+     background-color:#242424 !important;
+ }
+
+
+ /* 拼接部分 */
+ .zf-show{
+     float:left;
+     margin-right:25px;
+ }
+
+
+
+ /* 复制部分 */
+ 

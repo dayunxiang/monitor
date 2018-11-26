@@ -1,0 +1,79 @@
+.lef{
+    width:48%;
+    height:300px;
+    float:left;
+    margin-top:35px;
+
+    /* border:1px solid yellowgreen; */
+    /* margin-left:15px; */
+}
+.lef li span{
+    float:left;
+    height:35px;
+    line-height:35px;
+    margin:0 auto;
+    border:1px solid #FFFFFF;
+    width:35%;
+    text-align:center;
+    color:#FFFF;
+    /* font-size:18px; */
+    background-color: black;
+}
+.zf-b{
+    margin-top:15px;
+}
+.lef li div{
+    float:left;
+    height:35px;
+    line-height:35px;
+    margin:0 auto;
+    border:1px solid gray;
+    width:65%;
+    /* font-size:18px; */
+    text-align:center;
+    margin-top:0px;
+}
+.righ{
+    width:48%;
+    height:300px;
+    float:left;
+    margin-top:35px;
+    /* border:1px solid red; */
+}
+.righ li span{
+    float:left;
+    height:35px;
+    line-height:35px;
+    margin:0 auto;
+    border:1px solid #FFFFFF;
+    width:35%;
+    text-align:center;
+    color:#FFFF;
+    /* font-size:18px; */
+    background-color: black;
+}
+.righ li div{
+   
+    float:left;
+    height:35px;
+    line-height:35px;
+    margin:0 auto;
+    border:1px solid gray;
+    width:65%;
+    /* font-size:18px; */
+    text-align:center;
+    margin-top:0px;
+}
+
+.zf-top{
+    height:45px;
+    line-height:45px;
+    font-size:20px;
+    font-weight:900;
+    border-bottom:1px solid gray;
+}
+/* 表头背景色 */
+.vk-subpage2 .ant-table-thead tr th{
+    color:#FFFFFF;
+    background-color:#242424 !important;
+}

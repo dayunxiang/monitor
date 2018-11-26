@@ -1,0 +1,344 @@
+.General_control{
+	height:100%;
+     margin:0;
+	/* background-color:rgb(170,197,238); */
+	/* background-color: gray; */
+}
+.body{
+	height:100%;
+	margin:0;
+}
+/* 总控台左右边 */
+.General_control .left{
+	width:98%;
+	height:100%;
+	border-right:1px solid gray;
+}
+.General_control .right{
+	width:98%;
+	width:100%;
+	border:1px solid #FFFFFF;
+	margin-left:5px;
+}
+/* 左上 */
+.General_control .left .left-t{
+	height:50%;;
+	width:100%;
+}
+.General_control .left .left-t .day img{
+	margin-left:35px;
+}
+.General_control .left .left-t .day{
+	height:2%;
+	/* width:500px; */
+	width:100%;
+	/* line-height: 45px; */
+	font-size:18px;
+	margin:0 auto;
+	color:#000000;
+	border-radius:10px;
+	background-color:#000000;
+	margin-top:15px;
+}
+#demo{
+	margin-left:35px;
+	color:#FFFFFF;
+}
+.General_control .left .left-t .day img{
+	height:30px;
+}
+/* 八个 */
+.General_control .left .left-t .detail{
+	/* height:200px; */
+	/* width:500px; */
+	width:95%;
+	margin:0 auto;
+	/* background-color:yellowgreen; */
+}
+.General_control .left .left-t .weath{
+	height:125px;
+	line-height:125px;
+	font-size:16px;
+	/* width:500px; */
+	width:90%;
+	border-radius:10px;
+	margin:0 auto;
+	color:#000000;
+	margin-top:15px;
+	
+}
+/* .General_control .left .left-t #mobile4 .wtline {
+    width: 100%;
+    float: left;
+    height: 16px !important;
+    line-height: 18px;
+	margin-top: 3px;
+} */
+.General_control .left .left-t .detail button{
+	/* margin-left:5px; */
+	margin-top:15px;
+	height:80px;
+	border-radius:10px;
+
+	width:85%;
+	background-color:#000000 ;
+}
+.General_control .left .left-t .detail button div{
+	margin-top:5px;
+	color:#FFFFFF;
+	margin-left:-10px;
+}
+/* 报警部分 */
+.General_control .left  .left-m{
+	height:50%;
+	margin-top:25px;
+}
+
+
+.General_control .left .left-m .nav-title{
+	height:35px;
+	line-height:35px;
+	/* border:1px solid red; */
+	width:90%;
+
+}
+.General_control .left .left-m .title{
+color:#000000;
+font-size:20px;
+/* margin-top:15px; */
+margin-left:10px;
+float:left;
+}
+.General_control .left .left-m Button{
+height:25px;
+font-size:16px;
+float:right;
+/* margin-right:5px; */
+}
+
+.General_control .left .left-m .text1{
+	float:left;
+	color:#FFFFFF;
+	margin-left:15px;
+}
+.General_control .right .right-top{
+	height:500px;
+	border-bottom:1px solid gray;
+}
+.General_control .right .right-top .map{
+	float:left;
+	height:500px;
+	width:70%;
+	overflow: hidden;
+	clear: left;
+	position: relative;
+	bottom: 0px;
+	left: 0px
+}
+.General_control .right .right-top .map .LT{
+	margin-left:93%;
+	z-index: 5;
+	/* float:right; */
+	position: absolute;
+	background-color:#000000;
+	color:#FFFFFF;
+	margin-top:3px;
+}
+/* 巡查动态 */
+.right-bottom {
+	/* height:45px;
+	margin-top:15px; */
+}
+.right-bottom .tt{
+	height:35px;
+	margin-top:15px; 
+
+}
+.right-bottom .tt .title1{
+	color:#000000;
+	
+	margin-left:15px;
+	font-size:20px;
+}
+.right-bottom .tt Button{
+
+	float:right;
+	margin-right:15px;
+}
+
+.General_control .right .right-top .sport .title_t{
+	width:30px;
+	/* border:1px solid red; */
+	width:100%;
+
+}
+.General_control .right .right-top .sport{
+	float:left;
+	width:30%;
+}
+
+.General_control .right .sport  .title_t .title{
+	color:#000000;
+	font-size:20px;
+	
+}
+.General_control .right .sport .title_t Button{
+
+float:right;
+margin-right:15px;
+
+}
+.General_control .right .sport li{
+	margin:0 auto;
+}
+.General_control .right .sport .text1{
+	float:left;
+	color:#FFFFFF;
+	margin-left:15px;
+}
+
+/* 地图 */
+.vk-main-wrap{
+	height: 100%;
+}
+.ps-main-wrap{
+	height: calc(100% - 50px);
+}
+.ps-monitor{
+	position: relative;
+    padding-left: 0;
+    padding-top: 0;
+    overflow: hidden;
+}
+.ps-tools{
+	position: absolute;
+	right: 100px;
+	top: 20px;
+}
+.tooltip {
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    color: white;
+    padding: 4px 8px;
+    opacity: 0.7;
+    white-space: nowrap;
+  }
+  .tooltip-measure {
+    opacity: 1;
+    font-weight: bold;
+  }
+  .tooltip-static {
+    background-color: #ffcc33;
+    color: black;
+    border: 1px solid white;
+  }
+  .tooltip-measure:before,
+  .tooltip-static:before {
+    border-top: 6px solid rgba(0, 0, 0, 0.5);
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    margin-left: -7px;
+    left: 50%;
+  }
+  .tooltip-static:before {
+    border-top-color: #ffcc33;
+  } 
+  .ol-mouse-position{
+    bottom: 8px !important;
+    top: auto;
+  }
+.ps-submenu-title{
+}
+.ps-ol-table{
+    position: absolute;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow:  0 0 5px 1px rgba(0,0,0,0.6);
+}
+.ps-ol-table table{
+    border: 1px solid #e8e8e8;
+    width: 100%;
+}
+.ps-ol-table .ps-ol-label{
+    font-weight: bold;
+}
+.ps-ol-table .ps-ol-title{
+    text-align: center;
+}
+.ps-ol-table .ps-ol-title-center{
+    font-size: 18px;
+    font-weight: bold;
+}
+.ps-ol-table .ps-ol-title-left{
+    float: left;
+    margin-left: 10px;
+}
+.ps-ol-table .ps-ol-title-right{
+    float: right;
+    margin-right: 10px;
+}
+.ps-ol-table .ps-ol-right-tools{
+    float: right;
+    padding-right: 10px;
+}
+.ps-ol-table .ps-ol-close{
+    float: right;
+    margin-right: 5px;
+    margin-top: 4px;
+}
+
+/* 最新报警部分 */
+/* .left-m .db{
+	width:100%;
+	height:40px;
+	border-top:1px solid #ffffff;
+	border-bottom:1px solid #ffffff;
+}
+
+      .clearfix:after{
+	　　　content:"";
+	　　　　　　height:0;
+	　　　　　　line-height:0;
+	　　　　　　display:block;
+	　　　　　　visibility:hidden;
+	　　　　　clear:both
+	　　　　　}
+	　　　　.clearfix{
+	　　　　　　zoom:1
+	　　　　} */
+	/* 表头 */
+.table4 .ant-table-thead tr{
+	height:15px !important;
+}
+.table4 .ant-table-thead tr th{
+	color:rgb(68,211,228);
+	background-color: #000000 !important;
+}
+.table1 .ant-table-thead tr th{
+	color:rgb(68,211,228);
+	background-color: #000000 !important;
+}
+.table2 .ant-table-thead span{
+	color:#FFFFFF;
+    font-size:12px;
+}
+.table4 .ant-table-thead span{
+	color:#FFFFFF;
+    font-size:14px;
+}
+.table2 .ant-table-thead tr th{
+    color:rgb(68,211,228);
+	background-color: #000000 !important;
+}
+
+.table1 .ant-table-tbody .ant-table-row {
+	background-color: green !important;
+}
+.table .ant-table-tbody .ant-table-row {
+	background-color: green !important;
+}

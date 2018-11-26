@@ -6,7 +6,7 @@ import "./style.css";
 class Toolbar extends React.Component {
   	constructor(props, context) {
         super(props, context);
-        this.state = { 
+        this.state = {
             buttons: [
                 {text:"新增",icon:"file-add", type:"new"},
                 {text:"修改",icon:"edit", type:"edit"},
@@ -26,17 +26,14 @@ class Toolbar extends React.Component {
 
     render() {
         var dropDown = "";
-        if (this.state.extButtons && this.state.extButtons.length  ) {
+        if (this.state.extButtons && this.state.extButtons.length ) {
             var more = <Menu onClick={this.extBtnClick.bind(this, this.state.status)}>
                 {
-                    this.state.extButtons.map((item, i)=> {
-                            return <Menu.Item key={item.type}>{item.text}</Menu.Item>
-                    })
+                    this.state.extButtons.map((item, i) => {<Menu.Item key={item.type}>{item.text}</Menu.Item>;})
                 }
-            </Menu>
+            </Menu>;
             dropDown = <Dropdown overlay={more} trigger={['click']}>
                 <Button type="primary" size="small" icon="down" title="更多">
-                  
                 </Button>
             </Dropdown>
         } 

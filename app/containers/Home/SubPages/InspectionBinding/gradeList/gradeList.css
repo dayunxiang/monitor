@@ -1,0 +1,18 @@
+.vip .timeCycle{
+
+}
+.vip{
+    margin-top:15px;
+}
+.vip .worktime {
+    /* border:1px solid gray; */
+    /* width:100%; */
+}
+.vip .worktime .text{
+    float:left;
+    /* border:1px solid blueviolet; */
+}
+.vip .worktime .timeCycle{
+    float:right;
+    /* border:1px solid blueviolet; */
+}

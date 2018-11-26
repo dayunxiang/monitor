@@ -1,0 +1,74 @@
+.ps-word-table{
+    text-align: center;
+}
+.ps-word-table table {
+    border: 1px solid #e8e8e8;
+    width: 100%;
+}
+
+.ps-word-table table tr{
+    height: 40px
+}
+.ps-word-table td,th{
+    text-align: center;
+}
+.ps-word-table table tr th, .ps-word-table table tr td{
+    border-right: 1px solid #e8e8e8;
+}
+.ps-word-table .ps-weight-label{
+    font-weight: bold;
+}
+.ps-word-table .ps-wd-tools{
+    margin-top: 5px;
+    padding-left: 10px;
+}
+.ps-word-table .ps-wd-tools button {
+    margin-right: 5px;
+
+}
+.ps-word-table .ps-wd-title{
+    text-align: center;
+}
+.ps-word-table .ps-wd-title-center{
+    font-size: 18px;
+    font-weight: bold;
+}
+.ps-word-table .ps-wd-title-left{
+    float: left;
+    margin-left: 10px;
+}
+.ps-word-table .ps-wd-title-right{
+    float: right;
+    margin-right: 10px;
+}
+.ps-word-table .ps-wd-right-tools{
+    float: right;
+    padding-right: 10px;
+}
+.ps-rect-sure{
+    float: right;;
+}
+.ps-rect-cancel{
+    float: right;
+}
+.ps-rect-tools{
+    padding-top: 10px;
+}
+.ps-rect-tools button{
+    margin-left: 10px;
+}
+.ps-rect-margintop10{
+    margin-top: 10px;
+}
+.ps-rect-img {
+    height: 100px;
+}
+.ps-rect-img-big{
+    width: 100%;
+}
+.ps-rect-back{
+    height: 32px;
+}
+.ps-rect-back button {
+    float: left;
+}

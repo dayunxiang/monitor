@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import {Modal, Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete ,Table } from '../../../../components/Antd.js';
+import {Modal, Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete ,Table, Spin, Tabs } from '../../../../components/Antd.js';
 import BaseSubPage from '../BaseSubPage.js'
 
-import OperatorForm from '../../../../components/OperatorForm/OperatorForm.js';
+import OperatorForm from './OperatorForm/OperatorForm.js';
 import Toolbar from '../../../../components/Toolbar/Toolbar.js';
 import Cover from '../../../../components/Cover/Cover.js';
+import Vktable from '../../../../components/Vktable/Vktable.js';
 import "./style.css";
+const TabPane = Tabs.TabPane;
 class Operator extends BaseSubPage {
     constructor(props, context) {
         super(props, context);
         this.state = {
+            loading: true,
         	tableData:null, //table的数据
         	tableSelData:null, //当前选中的行数据
         	formDisable:true, //表单可编辑性
@@ -19,10 +22,14 @@ class Operator extends BaseSubPage {
         	modalShow: false, //莫泰窗口
             tableSrcollY:0,
         }
-        this.index = 100;//测试
+        this.typeData = [
+            {value:1,text:"管理员"},
+             {value:2,text:"一般"},
+        ];//测试
 
     }
     render() {
+       
         const columns = [
         	{title: '编码',dataIndex: 'code' ,width: "33%"},
         	{title: '名称',dataIndex: 'name',width: "34%"},
@@ -40,20 +47,52 @@ class Operator extends BaseSubPage {
         let delMessage = this.state.checkedRowData ? this.state.checkedRowData.map(function(item, i){
         	return item.name;
         }).join(","):""
+        const dtlColumns = [
+            {title: '组名',dataIndex: 'modal',width: "34%",type:"Select", getData:() => {
+                return this.typeData;
+            }}
+        ];
+        const roleDtlColumns = [
+            {title: '角色',dataIndex: 'modal',width: "34%",type:"Select", notNull:true, getData:() => {
+                return this.typeData;
+            }},
+            {title: '组名2',dataIndex: 'modal2',width: "34%",type:"Input",notNull:true,}
+        ]
+       
         return (
+            this.state.loading ? 
+            <div className="vk-subpage vk-subpage-loading" ><Spin size="large" /></div> : 
         	<div className="vk-subpage">
+                <Row>
+                    <Col md={24}>
+                        <Toolbar {...toolbarOpt}/>
+                    </Col>
+                </Row>
         		<Row>
 				    <Col  md={8} >
-				    	<Toolbar {...toolbarOpt}/>
 				    	<Table ref="table" size={'small'} bordered={false} scroll={{y:this.state.tableSrcollY}} 
 					    	rowSelection={{onSelect:this.onSelect,onChange:this.onChange.bind(this)}} columns={columns} 
 					    	dataSource={this.state.tableData} onRowClick={this.tableRowClick.bind(this)}
-                            rowClassName={this.rowClassName.bind(this)} pagination={{defaultPageSize:30}}/>
-				    	<Cover cover={this.state.cover} fullScreen={false} topOffset={30}/>
-
+                            rowClassName={this.rowClassName.bind(this)} pagination={{defaultPageSize:25,total:1000}}/>
+				    	<Cover cover={this.state.cover} fullScreen={false} topOffset={0}/>
 				    </Col>
 				    <Col  md={16} >
 				    	<OperatorForm ref="form" disabled={this.state.formDisable}/>
+                        <div className="ps-tabs-cont">
+                            <Tabs defaultActiveKey="bindRole">
+                                <TabPane tab="绑定角色" key="bindRole" forceRender={true}>
+                                    
+                                    <Vktable ref={(node) => {this.roleTable = node;}} size={'small'} bordered={false} scroll={{x:true}} 
+                                         columns={roleDtlColumns} tempKey="vk-mt"
+                                    />
+                                </TabPane>
+                                <TabPane tab="绑定组" key="bindGroup" forceRender={true}>
+                                    <Vktable ref={(node) => {this.vkTable = node;}} size={'small'} bordered={false} scroll={{x:true}} 
+                                         columns={dtlColumns} tempKey="vk-mt"
+                                    />
+                                </TabPane>
+                            </Tabs>
+                        </div>
 				    </Col>
 				</Row>
 				<Modal
@@ -78,8 +117,12 @@ class Operator extends BaseSubPage {
         super.componentWillUnmount();
         window.removeEventListener("resize", this.onresize);
     }
-    
-
+    componentWillMount() {
+        console.log(arguments)
+    }
+    componentWillUpdate(nextProps, nextState) {
+        console.log(nextProps, nextState)
+    }
     //处理表格的方法,主要表格撑长
     handlerTableFns() {
     	let offset = 250;
@@ -148,13 +191,17 @@ class Operator extends BaseSubPage {
         }
     }
     loadTableData() {
-    	let columns = [];
-        for (var i = 0; i < 14; i++) {
-        	columns.push({key:i, code:"taosy"+i, name:"陶顺逸"+i, statue:"1", password:"11111", email:"5414@qq.com", sex:"1"})
-        }
-        this.setState({
-        	tableData:columns
-        })
+        window.setTimeout(() => {
+            let columns = [];
+            for (var i = 0; i < 14; i++) {
+                columns.push({key:i, code:"taosy"+i, name:"陶顺逸"+i, statue:"1", password:"11111", email:"5414@qq.com", sex:"1"})
+            }
+            this.setState({
+                tableData:columns,
+                loading:false
+            })
+        },500);
+    	
 
     }
     tableRowClick(record, index, event) {
@@ -168,11 +215,14 @@ class Operator extends BaseSubPage {
     }
     toolbarNewClick(success){
         success();
-    	this.cleanForm();
+    	
     	this.setState({
     		formDisable:false,
     		cover:true
-    	});
+    	}, () => {
+            console.log(1)
+        });
+        this.newForm();
     }
     toolbarEditClick(success){
     	if (this.state.tableSelData) {
@@ -181,6 +231,7 @@ class Operator extends BaseSubPage {
 	    		formDisable:false,
 	    		cover:true
 	    	});
+            this.editForm();
     	}else{
     		Modal.warning({
 			    title: '对不起',
@@ -221,6 +272,12 @@ class Operator extends BaseSubPage {
             if (!err) {
             	// 
                 var vals = form.getFieldsValue();
+                let isrollTableOk = this.roleTable.valid();
+                if (!isrollTableOk) {
+                    error();
+                    return;
+                }
+               
     			console.log(vals);
     			window.setTimeout(() => {
 		    		success();
@@ -271,33 +328,70 @@ class Operator extends BaseSubPage {
     		formDisable:true,
     		cover:false
     	});
-    	this.fillForm();
+    	this.cancelForm();
     }
     //填充表单
     fillForm(){
     	var form = this.refs.form, selData = this.state.tableSelData;
     	if (selData) {
     		form.setFieldsValue({
-	    		oCode: selData.code,
-	    		oName: selData.name,
-	    		oPassword:selData.password,
-	    		email: selData.email,
+	    		userCode: selData.code,
+	    		userName: selData.name,
+	    		userPassword:selData.password,
+	    		userEmail: selData.email,
 	    		gender: selData.sex,
                 region:selData.region
 	    	});
     	}
-        console.log(form== this.refs.form.getForm(), form.setFieldsValue ==this.refs.form.getForm().setFieldsValue)
+        this.vkTable.fill(selData.materialDtl);
+        this.roleTable.fill(selData.materialDtl);
     	
     }
-    cleanForm() {
-    	var form = this.refs.form.getForm();
-    	form.setFieldsValue({
-    		oCode: '',
-    		oName: '',
-    		oPassword:'',
-    		email: '',
-    		gender: ''
-    	});
+  
+    newForm() {
+        var form = this.refs.form.getForm();
+        form.setFieldsValue({
+            userCode: '',
+            userName: '',
+            userPassword:'',
+            userEmail: '',
+            userState: "1",
+            userCompany:""
+        });
+        this.vkTable.new();
+        this.roleTable.new();
+    }
+    editForm() {
+        var form = this.refs.form.getForm(), selData = this.state.tableSelData;
+        if (selData) {
+            form.setFieldsValue({
+                userCode: selData.code,
+                userName: selData.name,
+                userPassword:selData.password,
+                userEmail: selData.email,
+                userGender: selData.sex,
+                userRegion:selData.region
+            });
+            this.vkTable.edit(selData.materialDtl);
+            this.roleTable.edit(selData.materialDtl);
+        }
+    }
+    cancelForm() {
+        var form = this.refs.form.getForm(), selData = this.state.tableSelData;
+        if (selData) {
+            form.setFieldsValue({
+                userCode: selData.code,
+                userName: selData.name,
+                userPassword:selData.password,
+                userEmail: selData.email,
+                userGender: selData.sex,
+                userRegion:selData.region
+            });
+
+        }
+        this.vkTable.fill(selData && selData.materialDtl);
+        this.roleTable.fill(selData && selData.materialDtl);
+        
     }
 
    

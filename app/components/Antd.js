@@ -69,7 +69,56 @@ import 'antd/lib/avatar/style/css';
 import Popconfirm from 'antd/lib/popconfirm';  
 import 'antd/lib/popconfirm/style/css';
 
+import Spin from 'antd/lib/spin';  
+import 'antd/lib/spin/style/css';
 
 
-export { TreeSelect,InputNumber,Badge,Tree, Menu, Dropdown, Form, Input, Tooltip, Cascader, Select, 
-	Row, Col, Checkbox, AutoComplete,Modal, DatePicker, Button ,Table  , Icon, Tabs, Avatar, Popconfirm};
+import Steps from 'antd/lib/steps';  //进度条
+import 'antd/lib/steps/style/css';
+
+import message from 'antd/lib/message';  
+import 'antd/lib/message/style/css';
+
+import Popover from 'antd/lib/popover';
+import 'antd/lib/popover/style/css'
+
+// 上传Ui
+import Upload from 'antd/lib/upload';
+import 'antd/lib/upload/style/css';
+
+import Layout from 'antd/lib/layout';
+import 'antd/lib/layout/style/css';
+
+import Breadcrumb from 'antd/lib/breadcrumb';
+import 'antd/lib/breadcrumb/style/css';
+
+import Divider from 'antd/lib/divider';
+import 'antd/lib/divider/style/css';
+
+import Pagination from 'antd/lib/pagination';
+import 'antd/lib/pagination/style/css';
+
+
+import Progress from 'antd/lib/progress';
+import 'antd/lib/progress/style/css';
+
+import Timeline from 'antd/lib/timeline';  //时间轴
+import 'antd/lib/timeline/style/css';
+
+import Carousel from 'antd/lib/carousel';  
+import 'antd/lib/carousel/style/css';
+
+import Radio from 'antd/lib/radio';  
+import 'antd/lib/radio/style/css';
+
+const IconFont = Icon.createFromIconfontCN({
+    scriptUrl: '//at.alicdn.com/t/font_515178_c2ag89sk4lj.js'
+});
+
+export { IconFont, Radio, Carousel,TreeSelect,InputNumber,Badge,Tree, Menu, Dropdown, Form, Input, Tooltip, Cascader, Select, Pagination, Divider,
+
+	Row, Col, Checkbox, AutoComplete,Modal, DatePicker, Button ,Table  , Icon, Tabs, Avatar, Popconfirm, Spin,Popover,Steps,Upload,message,Layout,Breadcrumb,Progress,Timeline 
+	// Row, Col, Checkbox, AutoComplete,Modal, DatePicker, Button ,Table  , Icon, Tabs, Avatar, Popconfirm, Spin,Popover,Steps,Upload,message,Layout,Breadcrumb, Divider
+
+};
+

@@ -1,0 +1,51 @@
+ .modal ul li .nav{
+float:left;
+height:35px;
+line-height:35px;
+margin:0 auto;
+border:1px solid #FFFFFF;
+width:15%;
+text-align:center;
+color:#FFFF;
+/* font-size:18px; */
+background-color: black;
+}
+.modal ul li .content{
+   
+float:left;
+height:35px;
+line-height:35px;
+margin:0 auto;
+border:1px solid gray;
+width:85%;
+text-align:center;
+margin-top:0px;
+}
+
+.modal ul li .nav1{
+    float:left;
+    height:105px;
+    line-height:105px;
+    margin:0 auto;
+    border:1px solid #FFFFFF;
+    width:15%;
+    text-align:center;
+    color:#FFFF;
+    /* font-size:18px; */
+    background-color: black;
+    }
+    .modal ul li .content1{
+       
+    float:left;
+    height:105px;
+    line-height:105px;
+    margin:0 auto;
+    border:1px solid gray;
+    width:85%;
+    text-align:center;
+    margin-top:0px;
+    }
+.modal ul li {
+    width:80%;
+    margin:0 auto;
+}

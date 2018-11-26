@@ -1,0 +1,52 @@
+.actual-time{
+    
+}
+
+.actual-time .actual-t .actual-t-l{
+    float:left;
+    margin-top:15px;
+}
+.actual-time .actual-t .box_main{
+   float:left;
+   margin-top:15px;
+}
+.actual-time .actual-t .actual-t-r{
+    margin-top:15px;
+    margin-right:85px;
+}
+.actual-t-l {
+    margin-top:55px;
+    margin-left:25px;
+    float:left;
+}
+.actual-t-l .water_different{
+    height:35px;
+    line-height:35px;
+    width:200px;
+}
+.actual-t-l .water_different .O{
+    width:120px;
+    height:35px;
+    font-size:18px;
+    border-radius:5px;
+    background-color:rgb(73,175,255);
+}
+
+
+.actual-t-r{
+    float:right;
+}
+.actual-t-r img{
+    width:30px;
+    height:30px;
+}
+/* 下面展示详细部分css */
+/*.ant-table-thead{
+    background-color:black !important;
+    font-size:16px;
+}*/
+/* 表头背景色 */
+.vk-subpage1 .ant-table-thead tr th{
+    color:#FFFFFF;
+    background-color:#242424 !important;
+}

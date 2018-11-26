@@ -1,0 +1,15 @@
+ .psdh .ant-table-tbody > tr > td {
+    padding: 3px 3px !important;
+    word-break: break-word;
+    -ms-word-break: break-all;
+}
+.psdh .ant-table-thead > tr > th{
+    padding: 5px 5px !important;
+    word-break: break-word;
+    -ms-word-break: break-all;
+    color:#FFFFFF;
+    background-color:#242424 !important;
+}
+.zs-table-cont{
+    /* background-color:black; */
+}

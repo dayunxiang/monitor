@@ -1,6 +1,7 @@
 import * as actionTypes from '../constants/home.js'
+import {USERINFO_LOGIN_OUT} from '../constants/userinfo'
 
-const initialState = { tabData:[],tabIndex:0 };
+const initialState = { tabData:[],tabIndex:0,layout:true };
 
 //
 const findTabIndex = (arr, data) => {
@@ -26,6 +27,7 @@ export default function homeInfo (state = initialState, action) {
         		nowTabData = state.tabData.concat([action.data]);
         		currentIndex = nowTabData.length - 1;
         	}else{
+                state.tabData[index] = action.data;
         		nowTabData = state.tabData;
         		currentIndex = index;
         	}
@@ -68,6 +70,11 @@ export default function homeInfo (state = initialState, action) {
         	return {...state,tabIndex:index};
         case actionTypes.RESET: 
             return initialState;
+        case actionTypes.CALL_LAYOUT: 
+            state.layout = action.data;
+            return {...state};
+        case USERINFO_LOGIN_OUT: 
+            return {...state, tabData:[]};
         default:
             return state
     }

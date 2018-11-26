@@ -1,4 +1,4 @@
-$navbarColor:rgb(20,150,242);
+$navbarColor:#001529;
 .navbar{
 	margin-bottom: 0px !important;
 	height: 50px;
@@ -12,22 +12,28 @@ $navbarColor:rgb(20,150,242);
 .nav-left-cont{
 	width: 250px;
 	overflow: hidden;
-	text-align: center;
 	img{
 		height: 100%;
+		width:59px;
+		padding: 2px;
+		padding-left: 10px;
+
 		/*width: 100%;*/
+	}
+	.nav-system-name{
+		font-size: 18px;
+		vertical-align: middle;
 	}
 }
 
 .nav-right-cont{
-	width: 250px;
+	/*width: 250px;*/
 	float: right;
 }
 .nav-center-ul{
 	height: 100%;
 }
 .nav-center-li{
-
 	font-size: 14px;
 	float: left;
 	width: 100px;
@@ -47,9 +53,31 @@ $navbarColor:rgb(20,150,242);
 .nav-center-li.short-width{
 	width: 50px;
 }
+.nav-right-ul{
+	height: 100%;
+	margin: 0;
+}
+.nav-right-li{
+
+	font-size: 14px;
+	float: left;
+	width: 60px;
+	height: 100%;
+	line-height: 50px;
+}
+.nav-right-li a{
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	color: white;
+}
+.nav-right-li a:hover{
+	background-color: rgb(20,129,228);
+}
 .lg-font {
 	.ant-badge{
-		font-size: 22px;
+		/*font-size: 22px;*/
 	}
 	i{
 		font-size: 22px;
@@ -64,8 +92,9 @@ $navbarColor:rgb(20,150,242);
 	color: white;
 }
 .nav-right-wrap{
-	padding: 9px 0;
+	padding: 0px 0;
 }
+
 .nav-right-wrap>span{
 	margin-right: 10px;
 }
@@ -83,6 +112,8 @@ $navbarColor:rgb(20,150,242);
 .nav-logout button:hover{
 	/*background-color: rgb(20,129,228)!important;*/
 }
-
+.nav-right-li .ant-badge{
+	color:white;
+}
 
 

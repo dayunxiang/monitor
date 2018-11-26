@@ -1,0 +1,394 @@
+.vk-main-wrap{
+	height: 100%;
+}
+.ps-main-wrap{
+	height: calc(100% - 50px);
+}
+.ps-monitor{
+	position: relative;
+    padding-left: 0;
+    padding-top: 0;
+    overflow: hidden;
+    min-height: 600px;
+}
+.ps-tools{
+	position: absolute;
+	right: 100px;
+	top: 20px;
+}
+.tooltip {
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    color: white;
+    padding: 4px 8px;
+    opacity: 0.7;
+    white-space: nowrap;
+  }
+  .tooltip-measure {
+    opacity: 1;
+    font-weight: bold;
+  }
+  .tooltip-static {
+    background-color: #ffcc33;
+    color: black;
+    border: 1px solid white;
+  }
+  .tooltip-measure:before,
+  .tooltip-static:before {
+    border-top: 6px solid rgba(0, 0, 0, 0.5);
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    margin-left: -7px;
+    left: 50%;
+  }
+  .tooltip-static:before {
+    border-top-color: #ffcc33;
+  } 
+  .ol-mouse-position{
+    bottom: 8px !important;
+    top: auto;
+  }
+.ps-submenu-title{
+/*  i {
+    vertical-align: middle;
+  }
+  span {
+    vertical-align: middle;
+  }*/
+}
+.ps-ol-table{
+    position: absolute;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow:  0 0 5px 1px rgba(0,0,0,0.6);
+    text-align: center;
+}
+.ps-ol-table table{
+    border: 1px solid #e8e8e8;
+    width: 100%;
+}
+.ps-ol-table .ps-ol-label{
+    font-weight: bold;
+}
+.ps-ol-table .ps-ol-title{
+    text-align: center;
+}
+.ps-ol-table .ps-ol-title-center{
+    font-size: 18px;
+    font-weight: bold;
+}
+.ps-ol-table .ps-ol-title-left{
+    float: left;
+    margin-left: 10px;
+}
+.ps-ol-table .ps-ol-title-right{
+    float: right;
+    margin-right: 10px;
+}
+.ps-ol-table .ps-ol-right-tools{
+    float: right;
+    padding-right: 10px;
+}
+.ps-ol-table .ps-ol-close{
+    float: right;
+    margin-right: 5px;
+    margin-top: 4px;
+}
+
+.ps-m-left{
+    position: absolute;
+    height: 100%;
+    width: 300px;
+    left: 0;
+    top: 0;
+    background: rgba(255,255,255,0.2);
+    padding: 5px 10px;
+    z-index: 1;
+}
+.ps-m-bottom{
+    position: absolute;
+    height: 250px;
+    width: calc(100% - 300px);
+    right: 0;
+    bottom: 0;
+    background: transparent;
+}
+.ps-m-ssb-cont{
+    /*height: 76px;*/
+}
+.ps-m-ssb-wrap{
+    font-size: 23px;
+    text-align: center;
+    background: #003399;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    padding: 16px 0;
+}
+.ps-m-ssb-wrap a{
+    color: white;
+}
+
+.ps-m-sum-cont{
+    height: calc(100% - 210px);
+}
+.ps-m-summary-chart{
+    height: 50%;
+    position: relative;
+    overflow: hidden;
+}
+.ps-m-summary-chart .ps-m-smchart{
+    height: 100%;
+}
+.ps-m-sm-chart-title{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    text-align: center;
+}
+.ps-m-sm-chart-subtitle-text{
+    font-weight: bold;
+    color: white;
+}
+.ps-m-sm-chart-subtitle-num{
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+}
+.ps-m-g-cont{
+    background: rgba(255,255, 255, 0.2);
+    height: 100%;
+    margin: 0 5px;
+    /*border: 1px solid red;*/
+
+}
+.ps-m-g-cont table{
+    padding: 0!important;
+    width: 100%;
+}
+.ps-m-g-cont table th{
+    color: #44D3E4;
+    background: #134458!important;
+}
+.ps-m-g-cont table td{
+    text-align: center;
+    padding: 5px 0;
+    color: white;
+}
+.ps-m-g-cont tr, .ps-m-g-cont th, .ps-m-g-cont td{
+    white-space:normal!important;
+}
+.ps-m-g-title{
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+.ps-m-g-body{
+    max-height: 205px;
+    overflow: hidden;
+    transition: all .4s;
+}
+
+.ps-m-bottom>div,.ps-m-bottom>div>div{
+    height: 100%;
+}
+.ps-m-srcoll-text{
+    position: absolute;
+    top: 12px;
+    /*right: 250px;*/
+    /*width: 50%;*/
+    width: 100%;
+    /*margin: 0 250px;*/
+    padding-right: 250px;
+    padding-left: 550px;
+    /*color: orange;*/
+    
+}
+.ps-m-srcoll-text marquee{
+    height: 30px;
+    width: 100%;
+    background: rgba(255,255,255,0.8);
+}
+/*地图动态展示css*/
+.qp-cont{
+    position: relative;
+}
+.qp-img{
+    opacity: 0;
+    width: 20px;
+}
+.qp-right-cell{
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-left: 25px;
+}
+.qp-bg{
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background: red;
+    overflow: hidden;
+}
+.qp-hide-text{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+}
+.qp-text{
+    color: white;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 0
+}
+@keyframes swipperText{
+    0%{ left: 0% }
+    25%{left: -50%}
+    50%{left: -100%}
+    75%{left: 100%}
+    100%{left: 50%}
+}
+.swipperText{
+    animation: swipperText 3s linear  infinite alternate;
+}
+@keyframes bgmoveStart{
+    0%{ width: 0% }
+    25%{width: 100%}
+    50%{width: 100%}
+    75%{width: 100%}
+    100%{width: 0%}
+}
+@-moz-keyframes bgmoveStart{
+    0%{ width: 0% }
+    25%{width: 100%}
+    50%{width: 100%}
+    75%{width: 100%}
+    100%{width: 0%}
+}
+@-webkit-keyframes bgmoveStart{
+    0%{ width: 0% }
+    25%{width: 100%}
+    50%{width: 100%}
+    75%{width: 100%}
+    100%{width: 0%}
+}
+/*@keyframes bgmoveEnd{
+    0%{ background: red ;width: 100%;}
+    100%{background: transparent;width: 100%;}
+}
+@-moz-keyframes bgmoveEnd{
+    0%{ background: red ;width: 100%;}
+    100%{background: transparent;width: 100%;}
+}
+@-webkit-keyframes bgmoveEnd{
+    0%{ background: red ;width: 100%;}
+    100%{background: transparent;width: 100%;}
+}*/
+@keyframes textmoveStart{
+    0%{opacity: 0}
+    25%{opacity: 0}
+    50%{opacity: 1}
+    75%{opacity: 1}
+    100%{opacity: 0}
+}
+@-moz-keyframes textmoveStart{
+    0%{opacity: 0}
+    25%{opacity: 0}
+    50%{opacity: 1}
+    75%{opacity: 1}
+    100%{opacity: 0}
+}
+@-webkit-keyframes textmoveStart{
+    0%{opacity: 0}
+    25%{opacity: 0}
+    50%{opacity: 1}
+    75%{opacity: 1}
+    100%{opacity: 0}
+}
+@keyframes imgmoveStart{
+    0%{opacity: 1}
+    25%{opacity: 1}
+    50%{opacity: 1}
+    75%{opacity: 1}
+    100%{opacity: 0}
+}
+@-moz-keyframes imgmoveStart{
+    0%{opacity: 1}
+    25%{opacity: 1}
+    50%{opacity: 1}
+    75%{opacity: 1}
+    100%{opacity: 0}
+}
+@-webkit-keyframes imgmoveStart{
+    0%{opacity: 1}
+    25%{opacity: 1}
+    50%{opacity: 1}
+    75%{opacity: 1}
+    100%{opacity: 0}
+}
+
+.animate-active .qp-img{
+    animation: imgmoveStart 3s linear 1 alternate forwards;
+    -moz-animation: imgmoveStart 3s linear 1 alternate forwards;
+    -webkit-animation: imgmoveStart 3s linear 1 alternate forwards;
+}
+.animate-active .qp-bg{
+    animation: bgmoveStart 3s linear 1 alternate forwards;
+    -moz-animation: bgmoveStart 3s linear 1 alternate forwards;
+    -webkit-animation: bgmoveStart 3s linear 1 alternate forwards;
+}
+.animate-active .qp-text{
+    animation: textmoveStart 3s linear 1 alternate forwards;
+    -moz-animation: textmoveStart 3s linear 1 alternate forwards;
+    -webkit-animation: textmoveStart 3s linear 1 alternate forwards;
+}
+
+.ps-war-monitor{
+    height: 100%;
+}
+.ps-m-header{
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color:white;
+    background-image: url(../../../../statics/img/monitor-logo.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center 31%;
+    height: 65px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.ol-zoom.ol-unselectable.ol-control{
+    display: none !important;
+}
+.ps-ol-cont-show .ps-ol-con-text{
+    display: block;
+}
+.ps-ol-cont-hide .ps-ol-con-text{
+    display: none;
+}
+.ps-ol-con-text{
+    /*display: none;*/
+    background: #fa541c;
+    color: white;
+    border-radius: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.ps-ol-wl-text{
+    background: #fa541c;
+    color: white;
+    border-radius: 4px;
+}

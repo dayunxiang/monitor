@@ -1,0 +1,68 @@
+.vk-sub .alarm_title{
+    height:55px;
+    line-height:55px;
+    border-bottom:1px solid gray;
+    /* border:1px solid rebeccapurple; */
+
+}
+.alarm_title .l{
+    float:left;
+    height:45px;
+    line-height:45px;
+    font-size:20px;
+    font-weight:900;
+    /* border-bottom:1px solid gray; */
+}
+.alarm-title .l{
+    height:45px;
+    line-height:45px;
+    font-size:20px;
+    font-weight:900;
+}
+.alarm_title .m{
+    float:left;
+    margin-left:145px;
+}
+.alarm_title .rr{
+    float:left;
+    width:400px !important;
+    height:55px;
+    margin-left:100px;
+    
+}
+/* 内容部分 */
+.vk-sub .message{
+height:350px;
+width:100% !important;
+margin-left:10px;
+margin-top:15px;
+}
+/* 预警 */
+.vk-page .alarm-title{
+    height:55px;
+    line-height:55px;
+    border-bottom:1px solid gray;
+}
+.vk-page .alarm-title .l{
+    float:left;
+}
+
+.vk-page .alarm-title .time-r{
+    float:right;
+    width:400px !important;
+    height:55px;
+    /* margin-right:100px; */
+    
+}
+.vk-page .alarm-title .btn-l{
+    float:right;
+    margin-right:35px;}
+/* 表头背景色 */
+.vk-page .ant-table-thead tr th{
+    color:#FFFFFF;
+    background-color:#242424 !important;
+}
+.message .ant-table-thead tr th{
+    color:#FFFFFF;
+    background-color:#242424 !important;
+}

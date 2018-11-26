@@ -1,0 +1,47 @@
+.ps-video-pannel{
+    padding-bottom: 5px;
+}
+.ps-video-cont{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 10000;
+    transition: all .5s;
+    
+}
+.ps-video-cont video {
+    /*position: absolute;
+    left: 0;
+    top:0;*/
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    float: left;
+    /*padding: 2px;*/
+}
+.ps-video-cont button{
+     position: absolute;
+    left: 0;
+    top:0;
+}
+.ps-video-box{
+    border: 1px solid lightgray;
+    /*height: 300px;*/
+    /*padding: 2px;*/
+    
+    /*box-shadow: 0 0 0px 1px lightGray;*/
+}
+.ps-video-fixed{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    
+}
+.ps-video-active{
+    box-shadow: 0 0 0px 1px orange;
+    /*background: orange;*/
+    border: 1px solid orange;
+    z-index: 1;
+}

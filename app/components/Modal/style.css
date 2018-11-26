@@ -1,0 +1,112 @@
+.vk-md-main{
+    transition: opacity .5s;
+    position: relative;
+    z-index: 2;
+}
+.vk-mask{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    height: 100%;
+    z-index: 1000;
+    filter: alpha(opacity=50);
+}
+.vk-md-wrap{
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    
+}
+.vk-md-cont{
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.65);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    width: auto;
+    margin: 0 auto;
+    top: 100px;
+    padding-bottom: 24px;
+    background: white;
+    z-index: 100;
+}
+.vk-md-header{
+    padding: 16px 24px;
+    border-radius: 4px 4px 0 0;
+    background: #fff;
+    color: rgba(0, 0, 0, 0.65);
+    border-bottom: 1px solid #e8e8e8;
+    font-weight: 500;
+    font-size: 18px;
+}
+.vk-md-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 59px;
+    border: 0;
+    color: black;
+    font-size: 16px;
+    outline: none;
+}
+.vk-md-close:hover,.vk-md-close:focus,.vk-md-close:visited,.vk-md-close:active{
+    outline: 0px solid red;
+    /*box-shadow: 0 0 0 0;*/
+}
+.vk-md-footer{
+    height: 32px;
+}
+.vk-md-footer span, .vk-md-footer span button {
+    float: right;
+}
+.vk-md-footer span button {
+    margin-right: 20px;
+}
+@keyframes show
+{
+    from {visibility:hidden; }
+    to { visibility:visible ;}
+}
+.vk-md-visible{
+    display: block;
+    opacity: 1;
+}
+@keyframes hide
+{
+    from {visibility:visible; }
+    to { visibility:hidden ;}
+}
+.vk-md-hide{
+    /*animation: hide .5s;*/
+    /*animation-fill-mode: forwards ;*/
+    display: none;
+    opacity: 0;
+}
+
+.vk-md-enter{
+    display: block;
+    opacity: 0;
+}
+.vk-md-leave{
+    display: block;
+    opacity: 0;
+}
+
+
+
+

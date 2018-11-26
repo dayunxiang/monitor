@@ -1,0 +1,376 @@
+.vk-sub .alarm_title{
+    height:55px;
+    line-height:55px;
+    border-bottom:1px solid gray;
+    /* border:1px solid rebeccapurple; */
+
+}
+.alarm_title .l{
+    float:left;
+    height:45px;
+    line-height:45px;
+    font-size:20px;
+    font-weight:900;
+    /* border-bottom:1px solid gray; */
+}
+.alarm-title .l{
+    height:45px;
+    line-height:45px;
+    font-size:20px;
+    font-weight:900;
+}
+.alarm_title .m{
+    float:left;
+    margin-left:145px;
+}
+.alarm_title .rr{
+    float:left;
+    width:400px !important;
+    height:55px;
+    margin-left:100px;
+    
+}
+/* 内容部分 */
+.vk-sub .message{
+height:350px;
+width:100% !important;
+margin-left:10px;
+margin-top:15px;
+}
+/* 预警 */
+.vk-page .alarm-title{
+    height:55px;
+    line-height:55px;
+    border-bottom:1px solid gray;
+}
+.vk-page .alarm-title .l{
+    float:left;
+}
+
+.vk-page .alarm-title .time-r{
+    float:right;
+    width:400px !important;
+    height:55px;
+    /* margin-right:100px; */
+    
+}
+.vk-page .alarm-title .btn-l{
+    float:right;
+    margin-right:35px;}
+/* 表头背景色 */
+.vk-page .ant-table-thead tr th{
+    color:#FFFFFF;
+    background-color:#242424 !important;
+}
+.message .ant-table-thead tr th{
+    color:#FFFFFF;
+    background-color:#242424 !important;
+}
+
+/* 弹框 */
+.vip .showModal .conent li div{
+    /* float:left; */
+    height:35px;
+    line-height:35px;
+    margin:0 auto;
+    border:1px solid gray;
+    /* width:45%; */
+    /* font-size:18px; */
+    /* width:35%; */
+
+    text-align:center;
+    margin-top:0px;
+}
+.vip .showModal .conent li span{
+    float:left;
+    height:35px;
+    line-height:35px;
+    margin:0 auto;
+    border:1px solid #FFFFFF;
+    width:35%;
+    text-align:center;
+    border:1px solid gray;
+
+    /* color:#FFFF; */
+    /* font-size:18px; */
+    /* background-color: black; */
+}
+/* 输入框 */
+.vip .reason {
+    /* border:1px solid red; */
+}
+.vip .reason .j .label{
+    margin-left:0px;
+    border:1px solid greenyellow;
+}
+.ps-word-table .ps-weight-label{
+    font-weight: bold;
+}
+
+.ps-word-table{
+    text-align: center;
+}
+.ps-word-table table {
+    border: 1px solid #e8e8e8;
+    width: 100%;
+}
+
+.ps-word-table table tr{
+    height: 40px
+}
+.ps-word-table td,th{
+    text-align: center;
+}
+.ps-word-table table tr th, .ps-word-table table tr td{
+    border-right: 1px solid #e8e8e8;
+}
+.vip .ps-wd-title{
+    text-align: center;
+
+}
+
+.vip .ps-wd-title .ps-wd-title-center{
+    font-size:18px;
+    font-weight: bold;
+}
+.vip .ps-wd-title .ps-wd-title-right{
+float:left;
+/* margin-left:2%; */
+/* width:95px; */
+border:1px solid #e8e8e8;
+border-radius:5px;
+}
+.vip table tr{
+    height:40px;
+}
+.vip table{
+    border: 1px solid #e8e8e8;
+    width: 93%;
+    /* margin-left:0px; */
+    text-align:center;
+    /* margin:0 auto; */
+}
+.vip  td,th{
+    text-align: center;
+}
+.vip  td,tr{
+    /* text-align: center; */
+}
+.vip button{
+    margin-left:16%;
+}
+.person .ant-form-item-label {
+    /* text-align: right; */
+    /* vertical-align: middle; */
+    line-height: 39.9999px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/* 待整改 */
+.vip .one{
+    height:65px;
+    /* width: 68%; */
+    width: 93%;
+    /* float:right; */
+    /* text-align:center;
+    margin:0 auto; */
+    margin-left: 83px;
+    border:1px solid #e8e8e8;
+}
+.vip .one .titl{
+    float:left;
+    height:65px;
+    line-height:65px;
+    text-align:center;
+    margin:0 auto;
+    width:100px;
+    border-right:1px solid #e8e8e8;
+    
+}
+.vip .one .content{
+    height:65px;
+    line-height:65px;
+    /* float:right; */
+}
+/* 照片 */
+.vip .two{
+    height:195px;
+    /* width: 68%; */
+    width: 93%;
+    margin-left: 83px;
+
+    /* float:right; */
+    border:1px solid #e8e8e8;
+}
+.vip .two .titl{
+    float:left;
+    height:195px;
+    line-height:195px;
+    text-align:center;
+    margin:0 auto;
+    width:100px;
+    border-right:1px solid #e8e8e8;
+    
+}
+.vip .two .content{
+    height:195px;
+    line-height:195px;
+}
+/* 备注 */
+.vip .tree{
+    height:69px;
+    width: 93%;
+    /* float:right; */
+    margin-left: 83px;
+    border:1px solid #e8e8e8;
+}
+.vip .tree .titl{
+    float:left;
+    height:65px;
+    line-height:65px;
+    text-align:center;
+    margin:0 auto;
+    width:100px;
+    border-right:1px solid #e8e8e8;
+    
+}
+.vip .tree .content{
+    height:65px;
+    line-height:65px;
+}
+/* 下面事件部分 */
+.vip .btn{
+    width:100%;
+    height:85px;
+    margin-top:15px;
+    /* border:1px solid rebeccapurple; */
+}
+.vip .btn .one{
+    width:95px;
+    height:45px;
+    line-height:45px;
+    margin-left:-1px;
+    /* float:left; */
+    
+}
+.vip .btn .two{
+    width:95px;
+    height:45px;
+    line-height:45px;
+    /* float:left; */
+    margin-left:10px;
+
+}
+.vip .btn .tree{
+    width:95px;
+    height:45px;
+    line-height:45px;
+    float:right;
+}
+/* 上表详细 */
+.vip .left {
+    width:85px;
+    height:450px;
+    line-height:450px;
+    border:1px solid #e8e8e8;
+    float:left;
+    margin-right:0px;
+}
+.vip .left-over {
+    width:85px;
+    height:120px;
+    line-height:120px;
+    border:1px solid #e8e8e8;
+    float:left;
+    margin-right:0px;
+}
+.vip .right{
+    /* float:left; */
+}
+/* 结果 维护结果 */
+.vip .fruit .fruit_l{
+    width:85px;
+    height:330px;
+    line-height:450px;
+    border:1px solid #e8e8e8;
+    float:left;
+    margin-right:0px;
+}
+/* 日志 */
+.editable-cell {
+    position: relative;
+  }
+  
+  .editable-cell-value-wrap {
+    padding: 5px 12px;
+    cursor: pointer;
+  }
+  
+  .editable-row:hover .editable-cell-value-wrap {
+    /* border: 1px solid #d9d9d9; */
+    border-radius: 4px;
+    padding: 4px 11px;
+  }
+  /* 日志 */
+.log .ant-steps{
+    width:52.5% !important;
+}
+
+  .log .every{
+      float:left;
+      margin-left:10px;
+      margin-right:7%;
+      height:200px;
+      width:400px;
+      /* border:1px solid rebeccapurple; */
+  }
+  .vk-log-item-title{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+.zf-log-item-name{
+    position: relative;
+    /* top: -5px; */
+    /* float: right; */
+    /* width: 100%; */
+    /* text-align: left; */
+    /* padding-left: 10px; */
+    /* margin-left:10px; */
+    border-left:2px solid #1890ff;;
+}
+.zf-log-item-name div{
+    /* margin-left:10px; */
+
+}
+/* .zf-log-item-name .item-line{
+    margin-bottom:10px;
+} */
+ .item-line{
+    width:250px;
+    font-size:18px;
+    width:100%;
+    height:35px;
+    /* border:1px solid rebeccapurple; */
+    /* border:1px solid rebeccapurple; */
+
+}
+.zf-log-item-line{
+    position: absolute;
+    left: 0px;
+    background: #1890ff;
+    height:45px;
+    /* height: 100%; */
+    width: 2px;
+    transform: translate(-50%,0);
+    margin: auto;
+}
+.zf-log-item-dot{
+    height: 10px;
+    width: 10px;
+    margin-left:-4px;
+    background: #fa8c16;
+    border-radius: 50%;
+}
+

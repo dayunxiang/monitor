@@ -16,15 +16,21 @@ module.exports = {
         vendors: ['react',
             'react-dom',
             'redux',
-            'react-redux'],
+            'react-redux', 'prop-types'],
         ol: 'ol',
+        echarts: "echarts",
+        // videoLib: ["./app/util/kurento-client.js", "./app/util/kurento-utils.min.js"],
         myAntd: './app/components/Antd.js',
-        polyfill: 'babel-polyfill'
+        polyfill: 'babel-polyfill',
+        common: ["./app/util/common.js", "./app/data/dataStore.js", "./app/containers/Home/SubPages/Monitor/map/ubimap.js",
+            "./app/components/FileUpload/FileUpload.js", "./app/components/Modal/Modal.js", "./app/components/Select/Select.js",
+            "./app/components/Vktable/Vktable.js"
+        ]
     },
     output: {
         path: path.join(__dirname, "build"),
         filename: "js/[name].[chunkHash:5].js",
-        publicPath: '',
+        publicPath: '/',
         chunkFilename: "js/[name].[chunkHash:5].js",
     },
     module: {
@@ -35,9 +41,11 @@ module.exports = {
             query: {
                 presets: ['env', 'react', 'stage-1'],
                 plugins: [
+                    "transform-runtime",
                     //["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }], // `style: true` 会加载 less 文件
                     ["transform-decorators-legacy"]
-                ]
+                ],
+                compact : false
             }
         }, {
             test: /\.css$/,
@@ -46,7 +54,7 @@ module.exports = {
                 use: "css-loader!postcss-loader!sass-loader"
             })
         }, {
-            test: /\.(png|jpg)$/,
+            test: /\.(png|jpg|gif)$/,
             loader: 'url-loader',
             query: {
                 limit: 8192,
@@ -72,7 +80,7 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             // 'process.env.NODE_ENV': JSON.stringify('production'),
-            DEV: JSON.stringify(false),
+            _DEV_: JSON.stringify(false),
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
 
@@ -103,16 +111,13 @@ module.exports = {
         }),
         new ExtractTextPlugin("css/[name].[chunkHash:5].css"),
         new OptimizeCssAssetsPlugin({
-            cssProcessorOptions: { // 引入cssnano后，可在此处配置css压缩规则
-                mergeLonghand: false,
-                discardComments: {
-                    removeAll: true
-                }
-            },
-            canPrint: true,
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano'),
+            cssProcessorOptions: {discardComments:{removeAll: true}},
+            canPrint: true
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['myAntd', 'ol', 'vendors', 'polyfill'],
+            name: ["common", 'myAntd', 'ol', 'echarts', 'vendors', 'polyfill'],
             minChunks: 2
         }),
         new cleanWebpackPlugin([path.join(__dirname, "build")]), // 打包前清空打包文件

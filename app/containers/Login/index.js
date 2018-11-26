@@ -1,25 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { hashHistory } from 'react-router'
-import LoginForm from '../../components/LoginForm/LoginForm.js';
+// import { hashHistory, browserHistory } from 'react-router'
+import LoginForm from './LoginForm/LoginForm.js';
 import * as userinfoActions from '../../actions/userAction.js'
 import { postData, getRandomColor ,getRandomNum} from '../../util/common.js';
 import { postLogin } from '../../data/dataStore.js';
 
-import { Modal} from '../../components/Antd.js';
+import { Modal, message} from '../../components/Antd.js';
+import PropTypes from 'prop-types'
+// import NProgress from "nprogress";
+// import 'nprogress/nprogress.css'
 // import { Modal} from 'antd';
 import './style.css'
-import Ball from './canvas/ball.js';
-import Board from './canvas/board.js';
-import Item from './canvas/item.js';
-import Enginee from './canvas/enginee.js';
-import Buff from './canvas/buff.js';
+// import Ball from './canvas/ball.js';
+// import Board from './canvas/board.js';
+// import Item from './canvas/item.js';
+// import Enginee from './canvas/enginee.js';
+// import Buff from './canvas/buff.js';
 function logger(target, name, descriptor){
     console.log(target, name, descriptor);
     let func = descriptor.value ;
     descriptor.value = function(){
-        console.log(this,"loggerDes");
+        console.log(this,"loggerDes", this === target);
         return func.apply(this, arguments);
     }
     // return descriptor;
@@ -35,72 +38,96 @@ class Login extends React.Component {
             crashNum:1,
         }
         this.keys ={};
-        console.log(this.props.param,hashHistory)
+        console.log(this.props.param)
     }
 
     render() {
         return (
             <div ref="loginCont" className="vk-login-cont">
-                <canvas id="canvas" ref="canvas" width="1300" height="700" ></canvas>
-                <LoginForm ref='LoginForm' show={this.state.showform} login={this.login.bind(this)}/>
+                <LoginForm ref='LoginForm' show={this.state.showform} login={this.login.bind(this)}
+                />
+                <div className="login-footer">2018 &copy; 上海普适导航科技股份有限公司</div>
             </div>
         )
     }
 
-    @logger
-    login(username, password) {
-        if (true) {
-            // window.setTimeout(() => {
-            //     this.refs.LoginForm.setLoading(false);
-            //     this.props.userInfoActions.loginSuccess({username:username,id:1});
-            //     this.jumpToHome();
-            // },2000);
+
+    // login(username, password) {
+    //     if (true) {
+    //         // window.setTimeout(() => {
+
+
+
+    
+    //         //     this.refs.LoginForm.setLoading(false);
+    //         //     this.props.userInfoActions.loginSuccess({username:username,id:1});
+    //         //     this.jumpToHome();
+    //         // },2000);
             
-            postLogin( {username:username, password:password}).then(res => {
-                return res.json()
-            }).then(json => {
-                this.refs.LoginForm.setLoading(false);
-                if (json.code === 0) {
+    //         postLogin( {username:username, password:password}).then(res => {
+    //             return res.json()
+    //         }).then(json => {
+    //             this.refs.LoginForm.setLoading(false);
+    //             if (json.code === 0) {
                     
-                    this.props.userInfoActions.loginSuccess(json.data);
-                    window.sessionStorage.setItem("userinfo",JSON.stringify(json.data) );
-                    this.jumpToHome();
-                }
-            }).catch( ex => {
-                this.refs.LoginForm && this.refs.LoginForm.setLoading(false);
-            })
-            this.jumpToHome();
+    //                 this.props.userInfoActions.loginSuccess(json.data);
+    //                 window.sessionStorage.setItem("userinfo",JSON.stringify(json.data) );
+    //                 this.jumpToHome();
+    //             }else{
+    //                 message.error(json.desc, 5);
+    //             }
+    //         }).catch( ex => {
+    //             message.error("服务器错误",5);
+    //             this.refs.LoginForm && this.refs.LoginForm.setLoading(false);
+    //         })
+    //         // this.jumpToHome();
             
-        }
-        this.setState({
-            showform:true
-        });
+    //     }
+    //     this.setState({
+    //         showform:true
+    //     });
         
+    // }
+    async login(username, password) {
+        this.refs.LoginForm && this.refs.LoginForm.setLoading(true);
+        let data = await postLogin( {username:username, password:password}).then(res => {
+            return res.json()
+        }).catch( ex => {console.log(ex)});
+        this.refs.LoginForm && this.refs.LoginForm.setLoading(false);
+        if (data && data.code === 200) {
+            this.props.userInfoActions.loginSuccess(data.data);
+            window.sessionStorage.setItem("userinfo",JSON.stringify(data.data) );
+            this.jumpToHome();
+            message.success('登录成功,正在加载...');
+        }else{
+            message.error((data && data.msg) || "服务器异常!",5);
+        }
+
     }
     componentDidMount() {
-        var loginCont = this.refs.loginCont, canvas= this.refs.canvas;
+        var loginCont = this.refs.loginCont;
         var windowH = window.innerHeight,windowW = window.innerWidth;
         var h = (windowH ) > 500 ? (windowH ) : (500 );
         loginCont.style.height = h+"px";
-        canvas.height = h;
-        canvas.width = windowW;
+        // canvas.height = h;
+        // canvas.width = windowW;
         this.onresize = ()=>{
             var windowH = window.innerHeight,windowW = window.innerWidth;
             var h = (windowH) > 500 ? (windowH ) : (500 );
             loginCont.style.height = h+"px";
-            canvas.height = h;
-            canvas.width = windowW;
-            this.restartGame();
+            // canvas.height = h;
+            // canvas.width = windowW;
+            // this.restartGame();
             // canvas.getContext("2d").fillRect(0, 0, canvas.width, canvas.height);
         }
         window.addEventListener("resize", this.onresize)
-        if (DEV) {
-            console.log("开发版本", DEV);
+        if (_DEV_) {
+            console.log("开发版本", _DEV_);
         }else{
-            console.log("发布版本", DEV);
+            console.log("发布版本", _DEV_);
             
         }
-        this.startGame();
+        // this.startGame();
 
         console.log(this.props.params);
 
@@ -115,12 +142,17 @@ class Login extends React.Component {
         window.removeEventListener("resize", this.onresize);
         window.removeEventListener("keydown", this.gameKeydown);
         window.removeEventListener("keydown", this.gameKeyup);
-        this.stopAnimation();
         this.modal && this.modal.destroy();
+        message.destroy();
     }
     
     jumpToHome() {
-        hashHistory.push('/main');
+        if (_DEV_) {
+            this.context.router.push('/home');
+        }else{
+            this.context.router.push('/monitor');
+        }
+        
     }
 
     updateUserinfo() {
@@ -274,6 +306,9 @@ class Login extends React.Component {
 
 
 }
+Login.contextTypes = {
+    router: PropTypes.object.isRequired
+};
 
 
 // -------------------redux react 绑定--------------------

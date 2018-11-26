@@ -1,0 +1,26 @@
+  // let report = {key: "report", name: "汇报"};
+  //   let review = {key: "review", name: "复核"};
+  //   let rectify = {key: "rectify", name: "整改"};
+  //   let confirm = {key: "confirm", name: "确认"};
+  //   let startRectify = {key: "startRectify", name: "开始整改"};
+  //   
+  //   let submitRectify = {key: "submitRectify", name: "提交整改"};
+  //   let sureRectify = {key: "sureRectify", name: "确认整改"};
+  //   let finishRectify = {key: "finishRectify", name: "完成整改"};
+  //   let cancel = {key: "cancel", name: "撤销"};
+  //   let reject = {key: "reject", name: "驳回"};
+export const RECTIFY_REPORT = 5;
+export const RECTIFY_REVIEW = 6;
+export const RECTIFY_CONFIRM = -1;
+export const RECTIFY_RECTIFY = 4;
+export const RECTIFY_START = 2;
+export const RECTIFY_SUBMIT = 3;
+export const RECTIFY_SURE = 7;
+export const RECTIFY_FINISH = 8;
+export const RECTIFY_CANCEL = 9;
+export const RECTIFY_REJECT = 10;
+export const RECTIFY_INREJECT = 15;
+export const RECTIFY_INRECTIFY = 12;
+export const RECTIFY_INSUBMIT = 13;
+export const RECTIFY_INFINISH = 14;
+export const RECTIFY_LOG = 11;

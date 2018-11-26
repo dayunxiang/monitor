@@ -1,0 +1,20 @@
+.ps-wt-table{
+    border: 1px solid #e8e8e8;
+    width: 100%;
+}
+.ps-wt-table tr {
+    height: 40px;
+}
+.ps-wt-table td{
+    text-align: center;
+}
+.ps-wt-table .ps-weight-label{
+    font-weight: bold;
+}
+.ps-wt-img{
+    cursor: pointer;
+    height: 200px;
+}
+.ps-wt-img-big{
+    width: 100%;
+}

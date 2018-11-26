@@ -1,12 +1,11 @@
 import React from 'react';
-import { Avatar, Row, Col, Menu, Input, Dropdown, Icon, Badge, Button } from '../Antd.js';
+import { Menu, Input, Dropdown, Icon, Badge, Button } from '../Antd.js';
+const Search = Input.Search;
 
 import "./style.css";
-
 class HomeHeader extends React.Component {
     constructor(props, context) {
         super(props, context);
-        
     }
     render() {
         const menu = (
@@ -18,51 +17,71 @@ class HomeHeader extends React.Component {
         );
         return (
             <nav className="navbar navbar-default">
-              <div className="nav-cont nav-left-cont">
-                <img src={require("../../statics/img/ubilogo.png")} alt="logo"/>
-              </div>
-              <div className="nav-cont nav-center-cont">
-                <ul className="nav-center-ul" >
-                  <li className="nav-center-li short-width" data-key="func" onClick={this.liClick.bind(this)}>
-                    <a href="#" className="lg-font">
-                      <Icon type="bars" />
-                    </a>
-                    
-                  </li>
-                  <li className="nav-center-li" data-key="monitor" onClick={this.liClick.bind(this)}>
-                    <a href="#">设备监控</a>
-                  </li>
-                  <li className="nav-center-li" data-key="system" onClick={this.liClick.bind(this)}>
-                    <a href="">信息管理</a>
-                    
-                  </li>
-                  
-                  {
-                  //   <li className="nav-center-li" data-key="shoppingList" onClick={this.liClick.bind(this)}>
-                  //   <a href="#" className="lg-font">
-                  //     <Badge count={0} showZero>
-                  //       <Icon type="shopping-cart" />
-                  //     </Badge>
-                  //   </a>
-                    
-                  // </li>
-                  }
-                </ul>
-              </div>
-              <div className="nav-cont nav-right-cont">
-                <div className="nav-right-wrap">
-                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                  <Dropdown overlay={menu}>
-                    <a className="ant-dropdown-link" href="javascript:void(0)">
-                      XXX管理员 <Icon type="down" />
-                    </a>
-                  </Dropdown>
-                  <span className="nav-logout">
-                    <Button type="primary" ghost shape="circle" icon="poweroff" data-key="poweroff" onClick={this.liClick.bind(this)}></Button>
-                  </span>
+                <div className="nav-cont nav-left-cont">
+                    <img src={require("../../statics/img/qp.png")} alt="logo"/>
+                    <span className="nav-system-name">青浦水闸泵站监控系统</span>
                 </div>
-                
-              </div>
+                <div className="nav-cont nav-center-cont">
+                    <ul className="nav-center-ul" >
+                        <li className="nav-center-li short-width" data-key="func" onClick={this.liClick.bind(this)}>
+                            <a href="#" className="lg-font">
+                                <Icon type="bars" />
+                            </a>
+                        </li>
+                        <li  className="nav-center-li">
+                            <Search
+                                placeholder="全局搜索"
+                                style={{ width: 200 }}
+                            />
+                        </li>
+                    </ul>
+                </div>
+                <div className="nav-cont nav-right-cont">
+                    <div className="nav-right-wrap">
+                        <ul className="nav-right-ul" >
+                            <li className="nav-right-li" data-key="war-monitor" onClick={this.liClick.bind(this)}>
+                                <a href="#">
+                                    <Badge count={0} showZero={false} offset={[5,-5]}>
+                                      作战图
+                                    </Badge>
+                                </a>
+                            </li>
+                            <li draggable={true} className="nav-right-li" data-key="monitor" onClick={this.liClick.bind(this)}>
+                                <a href="#" draggable={true}>
+                                    <Badge count={0} showZero={false} offset={[5,-5]}>
+                                      报警
+                                    </Badge>
+                                </a>
+                            </li>
+                            <li className="nav-right-li" data-key="conservancy" onClick={this.liClick.bind(this)}>
+                                <a href="">
+                                    <Badge count={0} showZero={false} offset={[5,-5]}>
+                                      流转
+                                    </Badge>
+                                </a>
+                            </li>
+                            <li className="nav-right-li" data-key="shoppingList" onClick={this.liClick.bind(this)}>
+                                <a href="#" className="lg-font">
+                                    <Badge count={0} showZero offset={[5,-5]}>
+                                       消息
+                                    </Badge>
+                                </a>
+                            </li>
+                            <li className="nav-right-li">
+                                <Dropdown overlay={menu}>
+                                    <a className="ant-dropdown-link" href="javascript:void(0)">
+                                        <Icon type="user" style={{fontSize:"40px"}}/>
+                                    </a>
+                                </Dropdown>
+                            </li>
+                            <li className="nav-right-li">
+                                <span className="nav-logout">
+                                    <Button type="primary" ghost shape="circle" icon="poweroff" data-key="poweroff" onClick={this.liClick.bind(this)}></Button>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
         )
     }

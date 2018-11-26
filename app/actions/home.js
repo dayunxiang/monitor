@@ -1,5 +1,4 @@
 import * as actionTypes from '../constants/home.js';
-
 export function showHome(data) {
     return {
         type: actionTypes.SHOW_HOME,
@@ -39,5 +38,11 @@ export function activeTab(data) {
 export function reset() {
     return {
         type: actionTypes.RESET
+    }
+}
+export function callLayout(data) {
+    return {
+        type: actionTypes.CALL_LAYOUT,
+        data: data
     }
 }

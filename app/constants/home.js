@@ -5,3 +5,4 @@ export const ADD_TAB = 'ADD_TAB';
 export const REMOVE_TAB = 'REMOVE_TAB';
 export const ACTIVE_TAB = 'ACTIVE_TAB';
 export const RESET = 'RESET';
+export const CALL_LAYOUT = 'CALL_LAYOUT'; //通知页面布局发生改变

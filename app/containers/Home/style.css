@@ -9,9 +9,8 @@
 	float: left;
 	width: 250px;
 	height: calc(100% - 50px);
-	background-color: white;
+	background-color: #001529;
 	z-index: 100;
-	border-right: 1px solid #d9d9d9;
 	transition: width 0.5s ease;
 	overflow: hidden;
 }
@@ -99,7 +98,7 @@
 	width: calc(100%);
 }
 .ant-tabs-bar{
-	margin: 0 0 8px 0;
+	margin: 0 0 0 0;
 }
 tr,th,td{
 	overflow: hidden;
@@ -108,15 +107,73 @@ tr,th,td{
 .row-highlight{
 	background-color: rgb(20,150,242);
 	color: white;
+	
 }
 .row-highlight td{
 	background-color: rgb(20,150,242)!important;
 	color: white!important;
 }
+.ant-table-thead > tr, .ant-table-tbody > tr{
+	transition: none !important;
+}
+.ant-table-tbody > tr > td{
+	transition: none !important;
+}
 .vk-subpage{
 	padding-left: 10px; 
+	padding-top: 8px;
 	overflow: auto;
+	/*transition: all 0.4s;*/
+}
+.vk-subpage-loading{
+	text-align: center;
+}
+.ps-search-condition{
+	margin-bottom: 10px;
+}
+.ps-search-label{
+	display: block;
+	text-align: right;
+	padding-top: 5px;
+	padding-right: 10px;
+
+}
+.ps-new{
+	float: right;
+	margin-right: 10px;
+}
+.ps-loading-center{
+	text-align: center;
+}
+.ps-table-cont thead tr th{
+    background: #001529;
+    color:#00ffff;
 }
 .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title{
 	    padding: 0 25px !important;
+}
+.ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab.ant-tabs-tab-active{
+	height: 40px;
+    border-bottom: 3px solid #1890ff;
+}
+.ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab{
+	height: 40px;
+    border-bottom: 3px solid #fafafa;
+}
+.noselect {
+
+	-webkit-touch-callout: none; /* iOS Safari */
+
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+
+	-khtml-user-select: none; /* Konqueror */
+
+	-moz-user-select: none; /* Firefox */
+
+	-ms-user-select: none; /* Internet Explorer/Edge */
+
+	user-select: none; /* Non-prefixed version, currently
+
+	not supported by any browser */
+
 }

@@ -1,0 +1,27 @@
+.zf-page .input{
+    margin-top:10px;
+}
+.zf-page .picture .picture_nav{
+    width:100%;
+    margin-top:15px;
+    font-size:18px;
+    border-bottom:1px solid gray;
+}
+/* 历史报警列表 */
+.zf-page .count{
+    width:100%;
+    margin-top:15px;
+    font-size:18px;
+    margin-left:15px;
+    border-bottom:1px solid gray;
+}
+.zf-page .count_l{
+    margin-top:15px;
+}
+.oneAll{
+    float:left;
+}
+.twoAll{
+    float:left;
+    margin-left:-3%;
+}

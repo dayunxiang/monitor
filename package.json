@@ -42,7 +42,10 @@
   },
   "dependencies": {
     "antd": "^3.0.0",
+    "echarts": "^4.1.0",
     "es6-promise": "^4.2.2",
+    "moment": "^2.22.2",
+    "nprogress": "^0.2.0",
     "ol": "^5.2.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -54,7 +57,7 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "deploy": "./node_modules/.bin/webpack  --config webpack.config.deploy.js",
-    "deploy2": "./node_modules/.bin/webpack  --config webpack.config.deploy.js",
+    "test": "./node_modules/.bin/webpack  --config webpack.config.test.js",
     "watch": "./node_modules/.bin/webpack-dev-server --hot --inline --content-base"
   }
 }

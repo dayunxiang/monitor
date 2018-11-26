@@ -1,0 +1,42 @@
+
+/* 历史报警列表 */
+.zf-page .count{
+    width:100%;
+    margin-top:15px;
+    font-size:18px;
+    margin-left:15px;
+    border-bottom:1px solid gray;
+}
+.zf-page .count_l{
+    margin-top:15px;
+}
+.zf-page .look{
+    width:100%;
+    margin-top:15px;
+    font-size:18px;
+    margin-left:15px;
+    /* border:1px solid gold; */
+    border-bottom:1px solid gray;
+}
+.zf-page .look_l{
+    margin-top:15px;
+}
+.zf-page .input .time {
+   float:left;
+   height:35px;
+   line-height:35px;
+   margin-right:0px;
+   /* border:1px solid red; */
+}
+.zf-page .input .rr{
+    float:left;
+    /* border:1px solid goldenrod; */
+    margin-left:0px;
+}
+
+/* .zf-page .button{
+    margin-top:15px;
+    border:1px solid red;
+    height:45px;
+    line-height:45px;
+} */

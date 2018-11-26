@@ -1,0 +1,20 @@
+.ps-fama-table{
+    border: 1px solid #e8e8e8;
+    width: 100%;
+}
+.ps-fama-table tr {
+    height: 40px;
+}
+.ps-fama-table td{
+    text-align: center;
+}
+.ps-fama-table .ps-weight-label{
+    font-weight: bold;
+}
+.ps-fm-img{
+    cursor: pointer;
+    height: 200px;
+}
+.ps-fm-img-big{
+    width: 100%;
+}

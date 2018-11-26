@@ -1,0 +1,25 @@
+.zf-title .add{
+    float:right;
+    /* border:1px solid red */
+    margin-right:25px;
+
+}
+.zf-title .search{
+    float:right;
+    margin-right:25px;
+
+}
+.zf-title .leading{
+    float:right;
+    margin-right:25px;
+
+}
+.zf-title .export{
+    float:right;
+    margin-right:25px;
+
+}
+.zf-title .ipt{
+    float:right;
+    margin-right:15px;
+}

@@ -12,3 +12,10 @@ export function loginFailure(data) {
         data
     }
 }
+
+export function loginOut(data) {
+    return {
+        type: actionTypes.USERINFO_LOGIN_OUT,
+        data
+    }
+}

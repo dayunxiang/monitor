@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tree, Menu, Icon} from 'antd';
+import { Tree, Menu, Icon} from '../Antd.js';
 
 
 class Test extends React.Component {
@@ -14,9 +14,7 @@ class Test extends React.Component {
 	      	
 	    );
     }
-    componentWillReceiveProps() {
-
-    }
+    
     componentDidMount() {
     	
     }

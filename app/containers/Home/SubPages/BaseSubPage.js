@@ -10,28 +10,33 @@ class BaseSubPage extends React.Component {
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.adjustSubpage();
     }
     componentWillUnmount() {
         window.removeEventListener("resize", this.onPageResize);
+        this.setState = () => {return;};
     }
-    componentDidCatch(error, info){
+    componentDidCatch(error, info) {
         console.log(error, info);
         // this.props.homeActions.reset();
     }
-    adjustSubpage(){
+    adjustSubpage() {
         
         let thisDom = ReactDOM.findDOMNode(this);
         var windowH = window.innerHeight;
-        var h = (windowH ) > 500 ? (windowH - 98) +'px': (500 - 98)+'px' 
+        var h = (windowH ) > 500 ? (windowH - 90) +'px': (500 - 90)+'px' 
         thisDom.style.height = h;
         this.onPageResize = () => {
             var windowH = window.innerHeight;
-            var h = (windowH ) > 500 ? (windowH - 98) +'px': (500 - 98)+'px' 
+            var h = (windowH ) > 500 ? (windowH - 90) +'px': (500 - 90)+'px' 
             thisDom.style.height = h;
         }
         window.addEventListener("resize", this.onPageResize)
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.isActive == false) return false;
+        return true;
     }
 	
 }

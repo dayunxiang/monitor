@@ -9,6 +9,7 @@
         "es6": true,
         "mocha": true
     },
+    "parser": "babel-eslint",
     // JavaScript 语言选项
     "parserOptions": {
         // ECMAScript 版本
